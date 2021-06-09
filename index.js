@@ -41,29 +41,26 @@ app.get('/:id', (req, res) => {
   .catch(err => {console.log(err)})
 })
 
-// app.get('/heroes/:id', (req, res) => {
-//   axios.get(`http://www.omdbapi.com/?apikey=${omdbApiKey}&i=${req.params.id}`)
-//       .then((response) => {
-//         console.log(req.params.id)
-//         res.render('detail', {details: response.data});
-//       })
-//       .catch(err => {console.log(err)})
-// });
 
 
 
-// app.get('/heroes/:hero_id', (req, res) => {
-//   axios.get(https://api.opendota.com/api/heroes)
-//   .then((response) => {
-//     console.log(req.params.id)
-//     res.render('detail', {details: response.data});
-//   })
-//   .catch(err => {console.log(err)})
-// })
 
 // app.get('/teams', (req, res) => {})
 // app.get('/teams/:team_id', (req, res) => {})
 // app.get('/teams/compare', (req, res) => {})
+
+const team = existingTeam || [];
+
+function add_hero(hero) {
+  // prevent team size from exceeding 5
+  if (team.length >= 5) {
+    // do nothing
+    return;
+  }
+
+  team.push(hero);
+  render();
+}
 
 
 

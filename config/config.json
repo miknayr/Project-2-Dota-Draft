@@ -3,18 +3,18 @@
 
     "database": "database_development",
     "host": "127.0.0.1",
-    "dialect": "pg"
+    "dialect": "postgres"
   },
   "test": {
 
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "pg"
+    "dialect": "postgres"
   },
   "production": {
 
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "pg"
+    "dialect": "postgres"
   }
 }

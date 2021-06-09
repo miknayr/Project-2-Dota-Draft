@@ -1,0 +1,11 @@
+#dotaHeroCard {
+  display: grid;
+  border: 2px solid black;
+  margin: 10px;
+  width: 125px;
+  height: 200px;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}

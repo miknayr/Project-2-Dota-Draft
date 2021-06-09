@@ -5,9 +5,43 @@
 <ul>
   <li><%= dotaData.name %></li>
   <li><%= dotaData.localized_name %></li>
-  <li><%= dotaData.id%></li>
+  <li><%= dotaData.hero_id%></li> 
   <img src="http://cdn.dota2.com/<%= dotaData.img %>">
   <li>Picked in Pro Matches: <%= dotaData.pro_pick %></li>
   <li>Won in Pro Matches: <%= dotaData.pro_win %></li>
   <li>Banned in Pro Matches: <%= dotaData.pro_ban %></li>
+  <br>
+  <li>Win Percentage: <%= (dotaData.pro_win/dotaData.pro_pick ) %> </li>
 </ul>
+
+<div>
+  more technical stats
+  <br>
+  <ul>
+    <div>
+     <li>Base Health:  <%= dotaData.base_health %></li>
+     <li>Base Health Regen:  <%= dotaData.base_health_regen %></li>
+     <li>Base Mana:  <%= dotaData.base_mana%></li>
+     <li>Base Mana Regen:  <%= dotaData.base_mana_regen%></li>
+     <li>Base Armor:  <%= dotaData.base_armor %></li>
+     <li>Base Magic Resistance: <%= dotaData.base_mr %></li>
+    </div>
+    
+    <br>
+    
+    <div>
+      
+      <li>Base Minimum Attack: <%= dotaData.base_attack_min%></li>
+      <li> Base Maximum Attack: <%= dotaData.base_attack_max%></li>
+      <br>
+      <li> Base Strength: <%= dotaData.base_str%></li>
+      <li> Base Agility:  <%= dotaData.base_agi%></li>
+      <li>Base Intelligence: <%= dotaData.base_int%></li>
+      <br>
+      <li> Base Strength gain per Level: <%= dotaData.str_gain%></li>
+      <li> Base Agility gain per Level: <%= dotaData.agi_gain%></li>
+      <li> Base Intelligence gain per Level <%= dotaData.int_gain%></li>
+    </div>
+  </ul>
+
+</div>

@@ -8,3 +8,7 @@
 6/9 - 3pm update;
 - have individual hero data displayed on page 'localhost:port/1 = antimage'
 - url starts with hero ID rather than array index 0, hero ID 24 doesnt exist
+
+6/9 -5pm update;
+-gotta build the team to display at the bottom? have to fix the grid
+-kind of lost.

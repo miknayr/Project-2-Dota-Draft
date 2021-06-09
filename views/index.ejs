@@ -2,13 +2,16 @@
 <!-- <p class="text-center">
   <a href="/pokemon">Favorites</a>
 </p> -->
-<div class="container index">
+<div class="container index" id="dotaSet" >
   <% dotaData.forEach(function(dotaData) { %>
-      <div class="grid">
+      <div class="col" id="dotaHeroCard">
         <div >            
-          <h2><%= dotaData.localized_name %></h2>
-          <h4><%= dotaData.id%></h4>
-          <img src="http://cdn.dota2.com/<%= dotaData.img %>"> <!-- make sure to add http://cdn.dota2.com/-->
+          <p><%= dotaData.localized_name %></p>
+          <p><%= dotaData.hero_id%></p>
+          <img src="http://cdn.dota2.com/<%= dotaData.img %>" width="100"> <!-- make sure to add http://cdn.dota2.com/-->
+          <a href="/pokemon/<%= pokemon.id %> "> <!--- i dunno what to change this to -->
+            <button class=" btn btn-primary" >Add to Roster</button>
+          </a>
         </div>
         <br>
     </div>
