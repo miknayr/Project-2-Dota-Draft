@@ -1,0 +1,15 @@
+<h2 class="text-center">Dota Draft</h2>
+<p class="text-center">
+  <a href="/">home</a>
+</p>
+<div class='container'>
+  <% pokemon.forEach(pokemon => { %>
+      <div class=" well">
+          <h2><%= pokemon.name %></h2>
+          <img src="<%= pokemon.img_url %>" width="100" height="100">
+          <a href="/pokemon/<%= pokemon.id %> ">
+              <button class=" btn btn-primary" >Show me more</button>
+          </a>
+      </div>
+    <% }) %> 
+</div>

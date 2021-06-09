@@ -1,2 +1,6 @@
 6/8/21 - 4pm update;
 - intialized things and got things setup. 
+
+
+6/9 - 1pm update;
+- have heroes displayed! but not in a grid. 

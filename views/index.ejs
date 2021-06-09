@@ -1,0 +1,15 @@
+<h1 class="text-center">Dota Heroes</h1>
+<!-- <p class="text-center">
+  <a href="/pokemon">Favorites</a>
+</p> -->
+<div class="container index">
+  <% dotaData.forEach(function(dotaData) { %>
+      <div class="grid">
+        <div >            
+          <h2><%= dotaData.localized_name %></h2>
+          <h2><%= dotaData.img %></h2>
+          <img src="http://cdn.dota2.com/<%= dotaData.img %>"> <!-- make sure to add http://cdn.dota2.com/-->
+        </div>
+    </div>
+        <% }); %>
+</div>
