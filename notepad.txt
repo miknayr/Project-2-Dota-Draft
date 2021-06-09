@@ -18,17 +18,17 @@ write the routes
 
 
 **********************************************************
-                  What Would Kenny Do?
+                  
 **********************************************************
 
 1. Create your models for teams and heroes
 
 2. (GET) Routes:
-'/' home page is your team-builder.ejs view
+'/' home page is your team-builder.ejs view 
 '/heroes/:hero_id' to view details about a specific hero
 
-'/teams' to view a list of created teams
-'/teams/:team_id' to view details about a specific team
+'/teams' to view a list of created teams    
+'/teams/:team_id' to view details about a specific team <---
 '/teams/:team_id/edit' to edit a team, should also use 
   the team-builder.ejs view 
   (does a res.send({ team: [*heroes in here*] }))
@@ -120,3 +120,14 @@ Hi, if you're wondering what a `hero` is, it looks like this:
 
 app.get('/teams/compare', (req, res) => {})
 
+
+
+
+let true id = (req.params.id)
+if trueId <= 23 {
+  req.params.id - 1
+} else if trueId > 24 {
+  req.params.id - 2
+} else if trueId = 24 {
+  req.params.id = null
+}

@@ -4,3 +4,7 @@
 
 6/9 - 1pm update;
 - have heroes displayed! but not in a grid. 
+
+6/9 - 3pm update;
+- have individual hero data displayed on page 'localhost:port/1 = antimage'
+- url starts with hero ID rather than array index 0, hero ID 24 doesnt exist

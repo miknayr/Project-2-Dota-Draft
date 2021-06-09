@@ -26,6 +26,31 @@ app.get('/', (req, res) => {
   })
 })
 
+app.get('/:id', (req, res) => {
+  let dotaUrl = `https://api.opendota.com/api/heroStats/`;
+
+  axios.get(dotaUrl)
+  .then((apiResponse) => {
+    let trueId = (req.params.id-1)
+    if (req.params.id > 24){
+      trueId -= 1
+    }
+    console.log(req.params.id)
+    res.render('heroes/hero-stats', {dotaData: apiResponse.data[trueId]});
+  })
+  .catch(err => {console.log(err)})
+})
+
+// app.get('/heroes/:id', (req, res) => {
+//   axios.get(`http://www.omdbapi.com/?apikey=${omdbApiKey}&i=${req.params.id}`)
+//       .then((response) => {
+//         console.log(req.params.id)
+//         res.render('detail', {details: response.data});
+//       })
+//       .catch(err => {console.log(err)})
+// });
+
+
 
 // app.get('/heroes/:hero_id', (req, res) => {
 //   axios.get(https://api.opendota.com/api/heroes)
