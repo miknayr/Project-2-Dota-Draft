@@ -1,3 +1,109 @@
 figure out how to display data
 
-figure out how to 
+figure out how to parse through the data
+
+
+create the database models?
+refer back to the image
+
+
+- createdb dota2
+- sequelize model:create --name team --attributes id:integer,name:string;
+- sequelize model:create --name heroes --attributes hero_id:integer,name:string;
+- 
+
+write the models
+
+write the routes
+
+
+**********************************************************
+                  What Would Kenny Do?
+**********************************************************
+
+1. Create your models for teams and heroes
+
+2. (GET) Routes:
+'/' home page is your team-builder.ejs view
+'/heroes/:hero_id' to view details about a specific hero
+
+'/teams' to view a list of created teams
+'/teams/:team_id' to view details about a specific team
+'/teams/:team_id/edit' to edit a team, should also use 
+  the team-builder.ejs view 
+  (does a res.send({ team: [*heroes in here*] }))
+
+stretch goal?
+'/teams/compare' takes you to a page where you can 
+  select two teams to compare side by side?
+'/teams/compare/:team_a/vs/:team_b' a route shortcut
+  so you can link to a specific matchup?
+
+3. team-builder.ejs view
+this is going to be the main interactive page, containing:
+  - the full hero roster
+  - a team builder with a save button
+    [:)] [:(] [:/] [:3] [:0]
+                 [save team]
+
+This page contains logic:
+  - You need an team array [] that holds the team you are currently building
+  - clicking on a hero in the roster adds the hero to your team array 
+  - clicking X on a hero in the team builder removes them from your array
+  - as your team array changes, you need to update the UI accordingly
+
+There's only 2 main events on this page:
+  - add_hero(hero)
+  - remove_hero(index)
+  and every time you add or remove a hero, you need to call render() to update the UI
+
+*** PSEUDO CODE FOR team-builder.ejs LOGIC (I don't know where you can write JS in an ejs file but I'm sure you know) ***
+
+// you get a team from the res.send({team: [...]}) or you don't, so...
+const team = existingTeam || [];
+
+function add_hero(hero) {
+  team.push(hero);
+}
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice#remove_1_element_at_index_3
+function remove_hero(index) {
+  team.splice(index, 1);
+}
+
+// you gotta figure out how to do your DOM query selects, and then...
+render() {
+  // clear out the contents
+  domTeamList.innerHTML = '';
+
+  // and then fill it back up
+  team.forEach((hero) => {
+    // you need a DOM element for each hero...
+    // also you're going to need to figure out the specifics on how to do this
+    const heroElement = document.createElement('div')
+    // you probably want the hero.portraitUrl and hero.name in the heroElement
+
+    // and then you add the DOM element to add it back to the UI (and now it's re-rendered!)
+    domTeamList.appendChild(heroElement)
+  });
+
+  // and that's it! :)
+}
+
+*** PSEUDO CODE DONE ***
+
+if you're wondering what a `hero` is, it looks like this:
+{
+  name: "Anti-Mage",
+  portraitUrl: "https://static.wikia.nocookie.net/dota2_gamepedia/images/8/8e/Anti-Mage_icon.png/revision/latest/scale-to-width-down/256?cb=20200916215957",
+  category: "strength",
+}
+
+
+
+
+
+
+
+app.get('/teams/compare', (req, res) => {})
+

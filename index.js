@@ -11,12 +11,16 @@ app.set('view engine', 'ejs')
 app.use(layouts)
 app.use(express.static(__dirname+'/public'))
 
-
 // get '/' - show a form that lets the user search for a location
 app.get('/', (req, res) => {
   // res.send('Dota heroes Coming soon.')
   res.render('home.ejs')
 })
+app.get('/heroes/:hero_id', (req, res) => {})
+
+app.get('/teams', (req, res) => {})
+app.get('/teams/:team_id', (req, res) => {})
+app.get('/teams/compare', (req, res) => {})
 
 
 
