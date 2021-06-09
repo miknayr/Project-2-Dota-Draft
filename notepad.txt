@@ -33,21 +33,25 @@ write the routes
   the team-builder.ejs view 
   (does a res.send({ team: [*heroes in here*] }))
 
-stretch goal?
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do later
+// stretch goal?
 '/teams/compare' takes you to a page where you can 
   select two teams to compare side by side?
 '/teams/compare/:team_a/vs/:team_b' a route shortcut
   so you can link to a specific matchup?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ do later
+
 
 3. team-builder.ejs view
 this is going to be the main interactive page, containing:
   - the full hero roster
   - a team builder with a save button
-    [:)] [:(] [:/] [:3] [:0]
+    [:)] [:(] [:/] [:3] [:0] <--- faces
                  [save team]
 
 This page contains logic:
-  - You need an team array [] that holds the team you are currently building
+  - You need an team array [] of heroes (see note at the bottom) that holds the team you are currently building
   - clicking on a hero in the roster adds the hero to your team array 
   - clicking X on a hero in the team builder removes them from your array
   - as your team array changes, you need to update the UI accordingly
@@ -63,15 +67,24 @@ There's only 2 main events on this page:
 const team = existingTeam || [];
 
 function add_hero(hero) {
+  // prevent team size from exceeding 5
+  if (team.length >= 5) {
+    // do nothing
+    return;
+  }
+
   team.push(hero);
+  render();
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice#remove_1_element_at_index_3
 function remove_hero(index) {
   team.splice(index, 1);
+  render();
 }
 
 // you gotta figure out how to do your DOM query selects, and then...
+// you need to re-render every time the team array changes to keep the UI up-to-date
 render() {
   // clear out the contents
   domTeamList.innerHTML = '';
@@ -92,7 +105,7 @@ render() {
 
 *** PSEUDO CODE DONE ***
 
-if you're wondering what a `hero` is, it looks like this:
+Hi, if you're wondering what a `hero` is, it looks like this:
 {
   name: "Anti-Mage",
   portraitUrl: "https://static.wikia.nocookie.net/dota2_gamepedia/images/8/8e/Anti-Mage_icon.png/revision/latest/scale-to-width-down/256?cb=20200916215957",
