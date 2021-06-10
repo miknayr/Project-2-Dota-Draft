@@ -3,13 +3,28 @@
   <a href="/pokemon">Favorites</a>
 </p> -->
 
+<div class="container"> 
+
+  <div class="row justify-content-md-center">
+
+    <div class="col" id="comp">
+      <p class="compCell"> 1</p>
+      <p class="compCell"> 2</p>  
+      <p class="compCell"> 3</p> 
+      <p class="compCell"> 4</p> 
+      <p class="compCell"> 5</p>
+    </div>
+    
+    
+  </div>
+
+</div>
 
 <div class="container index" id="dotaSet" >
   <% dotaData.forEach(function(dotaData) { %>
       <div class="col" id="dotaHeroCard">
-        <div >            
-          <p><%= dotaData.localized_name %></p>
-          <p><%= dotaData.hero_id%></p>
+        <div heroId=<%=dotaData.hero_id%>>            
+          <p><%= dotaData.localized_name %> <%= dotaData.hero_id%></p>
           <img src="http://cdn.dota2.com/<%= dotaData.img %>" width="100"> <!-- make sure to add http://cdn.dota2.com/-->
     
           </a>
@@ -18,3 +33,22 @@
     </div>
         <% }); %>
 </div>
+
+
+<script>
+
+// function cellClick(clickedCellEvent) {
+//    console.log("🚀");
+//    console.log(clickedCellEvent)
+//     // const clickedCell = clickedCellEvent.target;
+//     // const clickedCellIndex = parseInt(clickedCell.getAttribute('compCell'));
+
+//     // console.log(clickedCell)
+// }
+
+// document.querySelectorAll('.compCell').forEach(cell => cell.addEventListener('click', cellClick));
+
+document.addEventListener('click', event => {
+  console.log(event)
+})
+</script>

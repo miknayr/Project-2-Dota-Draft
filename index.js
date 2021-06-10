@@ -53,9 +53,6 @@ app.get('/:id', (req, res) => {
 })
 
 
-
-
-
 // app.get('/teams', (req, res) => {})
 // app.get('/teams/:team_id', (req, res) => {})
 // app.get('/teams/compare', (req, res) => {})
