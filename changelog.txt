@@ -18,3 +18,13 @@
 - fixed /:id page to match with hero ID, so you can search for heroes specifically... maybe when you click into the hero for more detail???
 - added a sequelize database, and seed files to get the heroes into a table... need to figure out many:many situation
 - still no progress on creating an array that contains heroes based on hero_id.
+
+
+
+6/10 - 5pm update; 
+- not sure where to go, 
+route pages need to be made for all the RESTful situation (confused)
+a little lost on goals but also not sure how to achieve goals? vision isnt clear to begin with possibly.
+
+added event click listener, similar to tic tac toe to add heroes into an array and make a state of "hero comp".
+need to figure out how to move information from click to array as an element? maybe its an .then function???

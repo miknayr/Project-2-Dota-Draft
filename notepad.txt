@@ -47,7 +47,7 @@ write the routes
 this is going to be the main interactive page, containing:
   - the full hero roster
   - a team builder with a save button
-    [:)] [:(] [:/] [:3] [:0] <--- faces
+    [:)] [:(] [:/] [:3] [:0] <--- faces  <--- x
                  [save team]
 
 This page contains logic:
