@@ -7,6 +7,8 @@ const axios = require('axios');
 const app = express()
 const PORT = process.env.PORT
 app.set('view engine', 'ejs')
+const db = ('./models');
+
 
 //middleware
 app.use(layouts)
@@ -31,12 +33,21 @@ app.get('/:id', (req, res) => {
 
   axios.get(dotaUrl)
   .then((apiResponse) => {
-    let trueId = (req.params.id-1)
-    if (req.params.id > 24){
-      trueId -= 1
+   let hero
+    for(let x of apiResponse.data) {
+      if (x.hero_id == req.params.id) {
+        hero = x
+      }
     }
-    console.log(req.params.id)
-    res.render('heroes/hero-stats', {dotaData: apiResponse.data[trueId]});
+
+    // let hero = apiResponse.data.filter(x => { return x.hero_id == 10}) // <-- talk to kenny 
+    // let trueId = (req.params.id-1)
+    // if (req.params.id > 24){
+    //   trueId -= 1
+    // }
+    // console.log(apiResponse.data[x].hero_id)
+    // console.log(hero)
+    res.render('heroes/hero-stats', {dotaData: hero});
   })
   .catch(err => {console.log(err)})
 })
@@ -49,18 +60,18 @@ app.get('/:id', (req, res) => {
 // app.get('/teams/:team_id', (req, res) => {})
 // app.get('/teams/compare', (req, res) => {})
 
-const team = existingTeam || [];
+// const team = existingTeam || [];
 
-function add_hero(hero) {
-  // prevent team size from exceeding 5
-  if (team.length >= 5) {
-    // do nothing
-    return;
-  }
+// function add_hero(hero) {
+//   // prevent team size from exceeding 5
+//   if (team.length >= 5) {
+//     // do nothing
+//     return;
+//   }
 
-  team.push(hero);
-  render();
-}
+//   team.push(hero);
+//   render();
+// }
 
 
 

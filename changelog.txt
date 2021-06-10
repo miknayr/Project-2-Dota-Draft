@@ -12,3 +12,9 @@
 6/9 -5pm update;
 -gotta build the team to display at the bottom? have to fix the grid
 -kind of lost.
+
+
+6/10 - 12pm update; 
+- fixed /:id page to match with hero ID, so you can search for heroes specifically... maybe when you click into the hero for more detail???
+- added a sequelize database, and seed files to get the heroes into a table... need to figure out many:many situation
+- still no progress on creating an array that contains heroes based on hero_id.

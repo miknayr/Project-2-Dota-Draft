@@ -9,7 +9,7 @@ refer back to the image
 
 - createdb dota2
 - sequelize model:create --name team --attributes id:integer,name:string;
-- sequelize model:create --name heroes --attributes hero_id:integer,name:string;
+- sequelize model:create --name heroes --attributes hero_id:integer,name:string,localized_name:string,pro_pick:integer,pro_win:integer;
 - 
 
 write the models
@@ -120,3 +120,20 @@ Hi, if you're wondering what a `hero` is, it looks like this:
 
 app.get('/teams/compare', (req, res) => {})
 
+
+
+<div class="container index" id="dotaSet" >
+  <% dotaData.forEach(function(dotaData) { %>
+      <div class="col" id="dotaHeroCard">
+        <div >            
+          <p><%= dotaData.localized_name %></p>
+          <p><%= dotaData.hero_id%></p>
+          <img src="http://cdn.dota2.com/<%= dotaData.img %>" width="100"> <!-- make sure to add http://cdn.dota2.com/-->
+          <a href="/pokemon/<%= pokemon.id %> "> <!--- i dunno what to change this to -->
+            <button class=" btn btn-primary" >Add to Roster</button>
+          </a>
+        </div>
+        <br>
+    </div>
+        <% }); %>
+</div>
