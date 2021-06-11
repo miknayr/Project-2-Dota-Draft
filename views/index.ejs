@@ -1,41 +1,34 @@
-<h1 class="text-center">Dota Heroes</h1>
+<h1 class="text-center"> Dota Heroes </h1>
 
 <div class="container">
-
   <div class="row justify-content-md-center">
     <div class="col" id="comp">
-      <p class="compCell" cellId="1"> 1</p>
-      <p class="compCell" cellId="2"> 2</p>
-      <p class="compCell" cellId="3"> 3</p>
-      <p class="compCell" cellId="4"> 4</p>
-      <p class="compCell" cellId="5"> 5</p>
+      <p class="compCell" cellId="1">1</p>
+      <p class="compCell" cellId="2">2</p>
+      <p class="compCell" cellId="3">3</p>
+      <p class="compCell" cellId="4">4</p>
+      <p class="compCell" cellId="5">5</p>
     </div>
   </div>
-
 </div>
 
-<div class="container index" id="dotaSet" >
-  <% dotaData.forEach(function(hero) { %>
-
-    <div
-      class="col dotaHeroCard"
+<div class="container index" id="dotaSet">
+  <% dotaData.forEach(function(hero) { %>  
+    <div 
+      class="col dotaHeroCard" 
       data-id="<%= hero.hero_id %>"
       data-name="<%= hero.localized_name %>"
       data-img="<%= hero.img %>"
     >
-        <p><%= hero.localized_name %> <%= hero.hero_id%></p>
-        <img src="http://cdn.dota2.com/<%= hero.img %>" width="100"> <!-- make sure to add http://cdn.dota2.com/-->
-    </div>
-
-  <% }); %>
+      <p> <%= hero.localized_name %> <%= hero.hero_id %></p>
+      <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
+    </div>  
+  <% }) %>
 </div>
 
-
 <script>
-
 const dotaData = <%- JSON.stringify(dotaData) %>;
-
-const teamComp = [];
+const teamComp = []
 const alreadyAdded = {};
 
 const heroCards = document.querySelectorAll('div.dotaHeroCard');
@@ -51,77 +44,71 @@ heroCards.forEach((heroCard) => {
         name: props.name,
         img: props.img
       }
-    );
+    )
   })
-});
+})
 
 function addHero(hero) {
   if (teamComp.length >= 5) {
-    console.log('*** team comp is already full');
+    console.log('team is full')
     return;
   }
-
+  // hero is alrdy added reminder
   if (alreadyAdded[hero.id]) {
-    console.log(`*** ${hero.name} has already been added, please pick another hero`);
+    console.log(` ${hero.name} has already been added, pick another hero`)
     return;
   }
-
-  // remember that added the hero already
   alreadyAdded[hero.id] = true;
-
-  teamComp.push(hero);
-  console.log('*** added hero: ', hero.name, hero);
-  render();
+  teamComp.push(hero); //<-- push/add the hero into the array
+  console.log('added hero: ', hero.name, hero); // <--- confirm add
+  render();// <--- redraws
 }
 
 function removeHero(heroId, index) {
-  const removed = teamComp.splice(index, 1);
-  console.log('*** removed hero ', removed[0].name, ' at index ', index);
-
-  // remove hero from alreadyAdded
-  alreadyAdded[heroId] = false;
-
-  render();
+  const removed = teamComp.splice(index, 1); // <--- removes hero
+  console.log('removed hero', removed[0].name, ' at index', index); // <--- console log to confirm
+  alreadyAdded[heroId] = false; // < --- check the state if it exists or not,
+  render(); // <--- redraws
 }
 
 function render() {
-  console.log(`*** rendering ${teamComp.length} hero(s)`);
+  console.log(` starting the render function with ${teamComp.length} hero(s)`) // <-- check if the render works
+  teamCompList.innerHTML = ''; //<--- DOM manipulate to clear the list
 
-  // clear list view
-  teamCompList.innerHTML = '';
 
-  // fill teamCompList with hero cards based on teamComp array
-  teamComp.forEach((hero, index) => {
-    const heroCard = document.createElement('div');
-    heroCard.classList.add('compCell');
-    heroCard.classList.add('teamCompHeroCard')
-    heroCard.setAttribute('data-id', hero.id);
+  // this fills the teamCompList with heros based on the teamComp array.
+  teamComp.forEach ((hero, index) => { // <--- this is for display each hero in the array
+    const heroCard = document.createElement('div');// <--- this is making a new div that is the cell with the hero, visually
+    heroCard.classList.add('compCell'); // <--- this is for adding the cell that the hero exists in
+    heroCard.classList.add('teamCompHeroCard') // <--- this is for adding the hero card in the cell above
+    heroCard.setAttribute('data-id', hero.id); // <--- this is getting the cell with the hero card, an id
 
-    const nameLabel = document.createElement('p');
-    nameLabel.innerHTML = hero.name;
-    heroCard.appendChild(nameLabel);
+    const nameLabel= document.createElement('div'); // <--- this is making a new div with name of the hero in the cell.
+    nameLabel.innerHTML = hero.name; // <--- hero name is being pulled from the API // dota data in the for each function at the top
+    heroCard.appendChild(nameLabel); // <--- appendChild adds reference to the nameLabel
 
-    const heroImage = document.createElement('img');
-    heroImage.setAttribute('width', 100);
-    heroImage.setAttribute('src', `http://cdn.dota2.com/${hero.img}`);
+    const heroImage = document.createElement('img'); // <--- this is making the image of the hero for the cell 
+    heroImage.setAttribute('width', 100); // <--- setting its width so it fits evenly.
+    heroImage.setAttribute('src', `http://cdn.dota2.com/${hero.img}`) // <--- this is the source of the image, in an interpolated string using the $ sign
     heroCard.appendChild(heroImage);
 
-    teamCompList.appendChild(heroCard);
-  });
+    teamCompList.appendChild(heroCard); // <--- this is adding all this to the hero card (individual) that is being created in the for loop every time you click
+  })
 
-  // fill the rest of the teamCompList display with empty placeholder cards
-  for (let i = 0; i < 5 - teamComp.length; i++) {
-    const placeholderCard = document.createElement('div');
-    placeholderCard.classList.add('compCell');
-    teamCompList.appendChild(placeholderCard);
+  // this for loop is to fill the rest of the team comp list display with empty cards
+  for (let i = 0; i < 5 -teamComp.length; i++) { 
+    const placeholderCard = document.createElement('div') // <--- variable for the div
+    placeholderCard.classList.add('compCell') // <-- creating the div
+    teamCompList.appendChild(placeholderCard) // <-- adds  the created div (placeholdercard) into teamcomplist with append child.
   }
 
-  // add click event removeHero to each card
+  // add "click event" remove hero to each card
   const teamCompListCards = document.querySelectorAll('div.teamCompHeroCard');
-
-  teamCompListCards.forEach((card, index) => {
-    card.addEventListener('click', e => {
-      removeHero(card.dataset.id, index);
+  
+  
+  teamCompListCards.forEach((card, index) => { // <--- for each card in the team comp list
+    card.addEventListener('click', e=> { // <--- run this click event
+      removeHero(card.dataset.id, index); // <-- remove the hero from the index
     });
   });
 }
