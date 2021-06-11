@@ -28,3 +28,7 @@ a little lost on goals but also not sure how to achieve goals? vision isnt clear
 
 added event click listener, similar to tic tac toe to add heroes into an array and make a state of "hero comp".
 need to figure out how to move information from click to array as an element? maybe its an .then function???
+
+6/10 - 930pm update; 
+- added logic
+- chekc notes for next steps

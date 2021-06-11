@@ -1,43 +1,129 @@
 <h1 class="text-center">Dota Heroes</h1>
 
-<div class="container"> 
+<div class="container">
 
   <div class="row justify-content-md-center">
-
     <div class="col" id="comp">
       <p class="compCell" cellId="1"> 1</p>
-      <p class="compCell" cellId="2"> 2</p>  
-      <p class="compCell" cellId="3"> 3</p> 
-      <p class="compCell" cellId="4"> 4</p> 
+      <p class="compCell" cellId="2"> 2</p>
+      <p class="compCell" cellId="3"> 3</p>
+      <p class="compCell" cellId="4"> 4</p>
       <p class="compCell" cellId="5"> 5</p>
     </div>
-    
-    
   </div>
 
 </div>
 
 <div class="container index" id="dotaSet" >
-  <% dotaData.forEach(function(dotaData) { %>
-      <div class="col" id="dotaHeroCard">
-        <div heroId=<%=dotaData.hero_id%>>            
-          <p><%= dotaData.localized_name %> <%= dotaData.hero_id%></p>
-          <img src="http://cdn.dota2.com/<%= dotaData.img %>" width="100"> <!-- make sure to add http://cdn.dota2.com/-->
-    
-          </a>
-        </div>
-        <br>
+  <% dotaData.forEach(function(hero) { %>
+
+    <div
+      class="col dotaHeroCard"
+      data-id="<%= hero.hero_id %>"
+      data-name="<%= hero.localized_name %>"
+      data-img="<%= hero.img %>"
+    >
+        <p><%= hero.localized_name %> <%= hero.hero_id%></p>
+        <img src="http://cdn.dota2.com/<%= hero.img %>" width="100"> <!-- make sure to add http://cdn.dota2.com/-->
     </div>
-        <% }); %>
+
+  <% }); %>
 </div>
 
 
 <script>
 
-let compSetup = ['','','','',''];
-document.addEventListener('click', event => {
-  
-  console.log(event) // <--- how to define dotaData.hero_id
-})
+const dotaData = <%- JSON.stringify(dotaData) %>;
+
+const teamComp = [];
+const alreadyAdded = {};
+
+const heroCards = document.querySelectorAll('div.dotaHeroCard');
+const teamCompList = document.getElementById('comp');
+
+// bind click events to hero cards
+heroCards.forEach((heroCard) => {
+  const props = heroCard.dataset;
+  heroCard.addEventListener('click', e => {
+    addHero(
+      {
+        id: props.id,
+        name: props.name,
+        img: props.img
+      }
+    );
+  })
+});
+
+function addHero(hero) {
+  if (teamComp.length >= 5) {
+    console.log('*** team comp is already full');
+    return;
+  }
+
+  if (alreadyAdded[hero.id]) {
+    console.log(`*** ${hero.name} has already been added, please pick another hero`);
+    return;
+  }
+
+  // remember that added the hero already
+  alreadyAdded[hero.id] = true;
+
+  teamComp.push(hero);
+  console.log('*** added hero: ', hero.name, hero);
+  render();
+}
+
+function removeHero(heroId, index) {
+  const removed = teamComp.splice(index, 1);
+  console.log('*** removed hero ', removed[0].name, ' at index ', index);
+
+  // remove hero from alreadyAdded
+  alreadyAdded[heroId] = false;
+
+  render();
+}
+
+function render() {
+  console.log(`*** rendering ${teamComp.length} hero(s)`);
+
+  // clear list view
+  teamCompList.innerHTML = '';
+
+  // fill teamCompList with hero cards based on teamComp array
+  teamComp.forEach((hero, index) => {
+    const heroCard = document.createElement('div');
+    heroCard.classList.add('compCell');
+    heroCard.classList.add('teamCompHeroCard')
+    heroCard.setAttribute('data-id', hero.id);
+
+    const nameLabel = document.createElement('p');
+    nameLabel.innerHTML = hero.name;
+    heroCard.appendChild(nameLabel);
+
+    const heroImage = document.createElement('img');
+    heroImage.setAttribute('width', 100);
+    heroImage.setAttribute('src', `http://cdn.dota2.com/${hero.img}`);
+    heroCard.appendChild(heroImage);
+
+    teamCompList.appendChild(heroCard);
+  });
+
+  // fill the rest of the teamCompList display with empty placeholder cards
+  for (let i = 0; i < 5 - teamComp.length; i++) {
+    const placeholderCard = document.createElement('div');
+    placeholderCard.classList.add('compCell');
+    teamCompList.appendChild(placeholderCard);
+  }
+
+  // add click event removeHero to each card
+  const teamCompListCards = document.querySelectorAll('div.teamCompHeroCard');
+
+  teamCompListCards.forEach((card, index) => {
+    card.addEventListener('click', e => {
+      removeHero(card.dataset.id, index);
+    });
+  });
+}
 
 </script>
