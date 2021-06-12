@@ -32,3 +32,15 @@ need to figure out how to move information from click to array as an element? ma
 6/10 - 930pm update; 
 - added logic
 - chekc notes for next steps
+
+
+6/11 - 5pm update;
+added input form for team name,
+added team view page,
+
+names are being moved through the input form for DB.CREATE but need to figure out how to do multiple inputs into 1 database.
+once thats done, project should be mostly on track to finish.
+reference lines below.
+routes>teams - line 22 into line 40
+views>index.ejs line 99
+

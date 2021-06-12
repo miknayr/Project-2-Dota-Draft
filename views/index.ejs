@@ -1,15 +1,24 @@
 <h1 class="text-center"> Dota Heroes </h1>
 
 <div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col" id="comp">
-      <p class="compCell" cellId="1">1</p>
-      <p class="compCell" cellId="2">2</p>
-      <p class="compCell" cellId="3">3</p>
-      <p class="compCell" cellId="4">4</p>
-      <p class="compCell" cellId="5">5</p>
+  <form method="POST" action="/teams">
+    <div class="row justify-content-md-center">
+      <div class="col" id="comp">
+        
+
+
+
+        <input class="compCell" name="hero1" cellId="1">
+        <input class="compCell" name="hero2" cellId="2">
+        <input class="compCell" name="hero3" cellId="3">
+        <input class="compCell" name="hero4" cellId="4">
+        <input class="compCell" name="hero5" cellId="5">
+      </div>
+      <input type="text" name="teamName" id='name' required>
+      <button class="btn btn-primary" type="submit">Save</button>
     </div>
-  </div>
+
+  </form>
 </div>
 
 <div class="container index" id="dotaSet">
@@ -71,19 +80,25 @@ function removeHero(heroId, index) {
   render(); // <--- redraws
 }
 
+
 function render() {
   console.log(` starting the render function with ${teamComp.length} hero(s)`) // <-- check if the render works
   teamCompList.innerHTML = ''; //<--- DOM manipulate to clear the list
 
 
+  let i = 0
   // this fills the teamCompList with heros based on the teamComp array.
   teamComp.forEach ((hero, index) => { // <--- this is for display each hero in the array
     const heroCard = document.createElement('div');// <--- this is making a new div that is the cell with the hero, visually
     heroCard.classList.add('compCell'); // <--- this is for adding the cell that the hero exists in
     heroCard.classList.add('teamCompHeroCard') // <--- this is for adding the hero card in the cell above
     heroCard.setAttribute('data-id', hero.id); // <--- this is getting the cell with the hero card, an id
+    heroCard.setAttribute('name', hero.name);
 
-    const nameLabel= document.createElement('div'); // <--- this is making a new div with name of the hero in the cell.
+    const nameLabel= document.createElement('input'); // <--- this is making a new div with name of the hero in the cell.
+    nameLabel.setAttribute('name', 'heros'+[i]) 
+    i++
+    nameLabel.setAttribute('value', hero.name)
     nameLabel.innerHTML = hero.name; // <--- hero name is being pulled from the API // dota data in the for each function at the top
     heroCard.appendChild(nameLabel); // <--- appendChild adds reference to the nameLabel
 
@@ -109,6 +124,7 @@ function render() {
   teamCompListCards.forEach((card, index) => { // <--- for each card in the team comp list
     card.addEventListener('click', e=> { // <--- run this click event
       removeHero(card.dataset.id, index); // <-- remove the hero from the index
+      i--
     });
   });
 }

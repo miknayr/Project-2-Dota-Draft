@@ -6,14 +6,14 @@ const layouts = require('express-ejs-layouts')
 const axios = require('axios'); 
 const app = express()
 const PORT = process.env.PORT
-app.set('view engine', 'ejs')
 const db = ('./models');
 
 
 //middleware
+app.set('view engine', 'ejs')
 app.use(layouts)
 app.use(express.static(__dirname+'/public'))
-
+app.use(express.urlencoded({extended: false})); // <--- makes req.body useful for POST (cant do anythign without it)
 app.get('/', (req, res) => {
   let dotaUrl = 'https://api.opendota.com/api/heroStats';
   // Use request to call the API
@@ -23,7 +23,9 @@ app.get('/', (req, res) => {
   })
 })
 
-app.get('/:id', (req, res) => {
+app.use('/teams', require('./routes/teams'));
+
+app.get('/heroes/:id', (req, res) => {
   let dotaUrl = `https://api.opendota.com/api/heroStats/`;
 
   axios.get(dotaUrl)
@@ -41,11 +43,13 @@ app.get('/:id', (req, res) => {
 })
 
 
-// app.get('/teams', (req, res) => {})
+
+
+
 // app.get('/teams/:team_id', (req, res) => {})
 // app.get('/teams/compare', (req, res) => {})
 
-
+// Imports all routes from the pokemon routes file
 
 
 app.listen(PORT, () => console.log(`you have ${PORT} Gold to spend.`))
