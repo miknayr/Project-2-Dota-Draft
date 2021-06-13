@@ -19,37 +19,38 @@ const axios = require('axios');
 // POST /pokemon - receive the name of a pokemon and add it to the database
 router.post('/', (req, res) => {
   // TODO: Get form data and add a new record to DB
-  console.log(req.body.teamName)
+  console.log(req.body) // <--- check this situation from changelog (this )
   // console.log(req.params)
   // console.log(req.query)
   // console.log(req)
   res.send('success 👌👌👌👌👌👌👌👌👌')
+  var i;
+  for (i = 0; i < 5; i++) {
+    console.log(req.body.data.heros)
+  }
+
     // 
 });
 
-
-
-
-
-
 module.exports = router;
 
+// below is the db create
 
 
-// POST /pokemon - receive the name of a pokemon and add it to the database
+// POST /teams - receive the name of the team and add it to the database
 // router.post('/', (req, res) => {
 //   // TODO: Get form data and add a new record to DB
 //   db.teams.create({
 
 //       name: req.body.teamName,// ryan
-//       hero1: req.body.h
-//       hero2: req.body.e
-//       hero3: req.body.r
-//       hero4: req.body.o
-//       hero5: req.body.s
+//       hero1: req.body.heros0
+//       hero2: req.body.heros1
+//       hero3: req.body.heros2
+//       hero4: req.body.heros3
+//       hero5: req.body.heros4
 //   })
 //   .then(()=>{
-//     res.redirect('/pokemon')
+//     res.redirect('/teams')
 //   })
 //   .catch( error => console.log(error))
 // });
@@ -70,3 +71,14 @@ module.exports = router;
 
 
 // db.heroes.findAll{ // use req.body.hero1, req.body.hero2, etc. to find the heroes from the db}
+
+// // https://bezkoder.com/sequelize-associate-many-to-many/ 
+// const teams = sequelize.define("teams", { ... })
+// const heroes = sequelize.define("heroes", { ... })
+
+
+// const req.body.teamName = await db.heroes.findOne({  //<--- not sure how to get teamName this from the console.log(req.body) 
+//     where: {
+//       name: heros[i]
+//     } 
+// })

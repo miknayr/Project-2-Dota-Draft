@@ -34,4 +34,18 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// does this work??? https://bezkoder.com/sequelize-associate-many-to-many/
+// db.team = require("./team.model.js")(sequelize, Sequelize);
+// db.heroes = require("./heroes.model.js")(sequelize, Sequelize);
+// db.heroes.belongsToMany(db.team, {
+//   through: "team_heroes",
+//   as: "teams",
+//   foreignKey: "heroes_id",
+// });
+// db.team.belongsToMany(db.heroes, {
+//   through: "team_tag",
+//   as: "heroes",
+//   foreignKey: "team_id",
+// });
+
 module.exports = db;

@@ -6,6 +6,39 @@
   <% teams.forEach(teams => { %>
       <div class=" well">
           <h2><%= teams.name %></h2>
+          
       </div>
     <% }) %> 
 </div>
+
+<!-- 
+
+<a href="/">Home</a>
+
+<div class="view-pokemon">
+  <p class="text-center">
+  </p>
+    <h1><%= pokemon.name %></h1>
+
+      <% for (let i = 0; i < pokemon.types.length; i++) { %>
+    <h4><%= pokemon.types[i].type.name %> type</h4>
+      <% } %>
+    <img src="<%= pokemon.sprites.front_default %>" width="100" height="100">
+    <br>
+    <div id='pokeabilities'>
+    <h3>Abilities</h3>
+    <% for (let i = 0; i < pokemon.abilities.length; i++) { %>
+      <p><%= pokemon.abilities[i].ability.name %></p>
+    <% } %>
+      
+    </div>
+
+
+    <h2 class="show-heading">Base Stats</h4>
+    <% let stats = pokemon.stats[0] %>
+    <ul id="base-stats">
+    <% pokemon.stats.forEach(s => { %>
+        <li><%= s.stat.name.toUpperCase() %>: <%= s.base_stat %></li>
+    <% }) %>
+    </ul>
+</div> -->

@@ -44,3 +44,12 @@ reference lines below.
 routes>teams - line 22 into line 40
 views>index.ejs line 99
 
+
+
+
+6/12 - 8pm update;
+
+check models>index.js??? below line 36
+created controllers and kind of understand what theyre doing but not sure.
+
+stuck once again.

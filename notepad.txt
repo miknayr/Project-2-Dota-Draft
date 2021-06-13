@@ -141,4 +141,6 @@ next steps ;
 
 
 
+https://sequelize.org/master/class/lib/model.js~Model.html#static-method-bulkCreate
+
 
