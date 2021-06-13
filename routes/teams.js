@@ -16,20 +16,28 @@ const axios = require('axios');
 // })
 
 
-// POST /pokemon - receive the name of a pokemon and add it to the database
+// POST /teams - receive the name of team and add it to the database
 router.post('/', (req, res) => {
   // TODO: Get form data and add a new record to DB
-  console.log(req.body) // <--- check this situation from changelog (this )
+  // console.log(req.body.heros1) // <--- check this situation from changelog (this ) spits out 2nd hero choice
+  // for(let heros in req.body) {
+  //   console.log(heros)
+  // }
   // console.log(req.params)
   // console.log(req.query)
   // console.log(req)
-  res.send('success 👌👌👌👌👌👌👌👌👌')
-  var i;
-  for (i = 0; i < 5; i++) {
-    console.log(req.body.data.heros)
-  }
+  // var i;
 
-    // 
+  for (const key of Object.keys(req.body)) {
+    console.log(key, req.body[key]);
+  }
+  
+
+   
+
+  res.send('success 👌👌👌👌👌👌👌👌👌')
+
+  //   // 
 });
 
 module.exports = router;
