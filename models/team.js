@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.team.hasMany(models.team)
     }
   };
   team.init({
@@ -18,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     img_url:DataTypes.STRING,
     hero_name: DataTypes.STRING
-
   }, {
     sequelize,
     modelName: 'team',

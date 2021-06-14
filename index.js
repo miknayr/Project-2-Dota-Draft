@@ -30,21 +30,21 @@ app.get('/', (req, res) => {
 
 /////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
 
-const heroController = require('./controllers/heroes');
+// const heroController = require('./controllers/heroes');
 
 // GET /heroes/:id -- READ one specific hero~~~~~~~~~~
-app.get('/heroes/:id', heroController.hero_show_get_id)
+// app.get('/heroes/:id', heroController.hero_show_get_id) 
+app.use('/heroes', require('./controllers/heroes'))
+
 
 
 /////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
 // const teamsController = require('./controllers/team')
 
 // // GET /prehistoric-creatures -- READ all pcs ~~~~~~~~~
-app.get('/team', require('./controllers/team'))
+app.use('/team', require('./controllers/team'))
+
 // app.get('/team', require('./routes/teams'));
-
-
-
 
 // app.get('/teams/:team_id', (req, res) => {})
 // app.get('/teams/compare', (req, res) => {})
