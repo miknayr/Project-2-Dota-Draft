@@ -1,20 +1,14 @@
-// const db = require('./models')
-// db.team.sync({
-//   alter:true
-// })
+const db = require("./models");
+// const TeamController = require("./app/controllers/team.controller");
+// const HeroesController = require("./app/controllers/heroes.controller");
 
-// const db = require('./models');
+// const run = async () => {
 
-// db.team.create({
-//     name: 'pikachu',
-//     img_url:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-//   }).then(poke => {
-//     console.log('Created: ', poke.name)
-//     db.pokemon.findOne({
-//       where: {
-//         name: poke.name;
-//       }
-//     }).then(pokeFound => {
-//       console.log('Found: ', pokeFound.name)
-//     })
-//   })
+// };
+
+// db.sequelize.sync();
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+//   run();
+// });
+db.team.sync({ alter: true })

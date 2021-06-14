@@ -5,9 +5,22 @@
 <div class='container'>
   <% teams.forEach(teams => { %>
       <div class=" well">
-          <h2><%= teams.name %></h2>
-          
+          <h2><%= teams.name %></h2>  
       </div>
+      <div class="container index" id="dotaSet">
+        <% dotaData.forEach(function(hero) { %>  
+          <div 
+            class="col dotaHeroCard" 
+            data-id="<%= hero.hero_id %>"
+            data-name="<%= hero.localized_name %>"
+            data-img="<%= hero.img %>"
+          >
+            <p> <%= hero.localized_name %> <%= hero.hero_id %></p>
+            <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
+          </div>  
+        <% }) %>
+      </div>
+
     <% }) %> 
 </div>
 

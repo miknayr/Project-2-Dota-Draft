@@ -14,6 +14,7 @@ app.set('view engine', 'ejs')
 app.use(layouts)
 app.use(express.static(__dirname+'/public'))
 app.use(express.urlencoded({extended: false})); // <--- makes req.body useful for POST (cant do anythign without it)
+
 app.get('/', (req, res) => {
   let dotaUrl = 'https://api.opendota.com/api/heroStats';
   // Use request to call the API

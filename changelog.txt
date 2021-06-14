@@ -53,3 +53,7 @@ check models>index.js??? below line 36
 created controllers and kind of understand what theyre doing but not sure.
 
 stuck once again.
+
+
+6/13 -7pm update;
+heroes can now be added into database and have a name associated with it.

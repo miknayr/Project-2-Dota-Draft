@@ -16,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
   team.init({
     hero_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
-    img_url:DataTypes.STRING
+    img_url:DataTypes.STRING,
+    hero_name: DataTypes.STRING
+
   }, {
     sequelize,
     modelName: 'team',
