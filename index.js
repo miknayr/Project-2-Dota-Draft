@@ -39,8 +39,8 @@ app.get('/heroes/:id', heroController.hero_show_get_id)
 const teamsController = require('./controllers/team')
 
 // // GET /prehistoric-creatures -- READ all pcs ~~~~~~~~~
-app.get('/teams', teamsController.team_index)
-app.use('/teams', require('./routes/teams'));
+// app.get('/teams', teamsController.team_index)
+app.get('/teams', require('./routes/teams'));
 
 
 
