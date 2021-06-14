@@ -11,6 +11,7 @@ const rowdyResults = rowdy.begin(app)
 const fs = require('fs')
 const methodOverride = require('method-override')
 
+
 //middleware
 app.set('view engine', 'ejs')
 app.use(layouts)
@@ -36,11 +37,11 @@ app.get('/heroes/:id', heroController.hero_show_get_id)
 
 
 /////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
-const teamsController = require('./controllers/team')
+// const teamsController = require('./controllers/team')
 
 // // GET /prehistoric-creatures -- READ all pcs ~~~~~~~~~
-// app.get('/teams', teamsController.team_index)
-app.get('/teams', require('./routes/teams'));
+app.get('/team', require('./controllers/team'))
+// app.get('/team', require('./routes/teams'));
 
 
 
@@ -49,6 +50,7 @@ app.get('/teams', require('./routes/teams'));
 // app.get('/teams/compare', (req, res) => {})
 
 // Imports all routes from the pokemon routes file
+
 
 
 app.listen(PORT, () => {

@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
     .then(([name, created]) => {
       console.log(`We added ${req.body.teamName} to our roster!🐊🐊🐊🐊🐊🐊🐊🐊🐊`)
     }).catch(err => console.log(err))
-  })
+})
   res.redirect("/")
 });
 
