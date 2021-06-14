@@ -1,4 +1,3 @@
-// https://api.opendota.com/api/matches/271145478?api_key=75fe9567-b572-42ba-98d6-dc20a187f6ef
 
 require('dotenv').config()
 const express = require('express')
@@ -7,13 +6,17 @@ const axios = require('axios');
 const app = express()
 const PORT = process.env.PORT
 const db = ('./models');
-
+const rowdy = require('rowdy-logger')
+const rowdyResults = rowdy.begin(app)
+const fs = require('fs')
+const methodOverride = require('method-override')
 
 //middleware
 app.set('view engine', 'ejs')
 app.use(layouts)
 app.use(express.static(__dirname+'/public'))
 app.use(express.urlencoded({extended: false})); // <--- makes req.body useful for POST (cant do anythign without it)
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   let dotaUrl = 'https://api.opendota.com/api/heroStats';
@@ -24,25 +27,20 @@ app.get('/', (req, res) => {
   })
 })
 
+/////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
+
+const heroController = require('./controllers/heroes');
+
+// GET /heroes/:id -- READ one specific hero~~~~~~~~~~
+app.get('/heroes/:id', heroController.hero_show_get_id)
+
+
+/////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
+const teamsController = require('./controllers/team')
+
+// // GET /prehistoric-creatures -- READ all pcs ~~~~~~~~~
+app.get('/teams', teamsController.team_index)
 app.use('/teams', require('./routes/teams'));
-
-app.get('/heroes/:id', (req, res) => {
-  let dotaUrl = `https://api.opendota.com/api/heroStats/`;
-
-  axios.get(dotaUrl)
-  .then((apiResponse) => {
-   let hero
-    for(let x of apiResponse.data) {
-      if (x.hero_id == req.params.id) {
-        hero = x
-      }
-    }
-
-    res.render('heroes/hero-stats', {dotaData: hero});
-  })
-  .catch(err => {console.log(err)})
-})
-
 
 
 
@@ -53,4 +51,7 @@ app.get('/heroes/:id', (req, res) => {
 // Imports all routes from the pokemon routes file
 
 
-app.listen(PORT, () => console.log(`you have ${PORT} Gold to spend.`))
+app.listen(PORT, () => {
+  rowdyResults.print()
+  console.log(`you have ${PORT} Gold to spend.`)
+})
