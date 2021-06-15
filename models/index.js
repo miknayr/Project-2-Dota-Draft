@@ -21,7 +21,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize);
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
@@ -33,19 +33,5 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-// does this work??? https://bezkoder.com/sequelize-associate-many-to-many/
-// db.team = require("./team.model.js")(sequelize, Sequelize);
-// db.heroes = require("./heroes.model.js")(sequelize, Sequelize);
-// db.heroes.belongsToMany(db.team, {
-//   through: "team_heroes",
-//   as: "teams",
-//   foreignKey: "heroes_id",
-// });
-// db.team.belongsToMany(db.heroes, {
-//   through: "team_tag",
-//   as: "heroes",
-//   foreignKey: "team_id",
-// });
 
 module.exports = db;

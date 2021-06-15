@@ -28,7 +28,11 @@ router.post('/', (req, res) => {
       db.team.findOrCreate({
         where: {
           name: req.body.teamName,
-          hero_name: hero
+          hero_1:req.body.heros0,
+          hero_2:req.body.heros1,
+          hero_3:req.body.heros2,
+          hero_4:req.body.heros3,
+          hero_5:req.body.heros4
         }
       })
     .then(([name, created]) => {

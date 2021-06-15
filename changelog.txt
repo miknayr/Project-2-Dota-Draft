@@ -60,3 +60,6 @@ heroes can now be added into database and have a name associated with it.
 
 6/14 - 4pm update; 
 filtered heroes to be organized by attributes
+
+6/14 - 8pm update; 
+re-created tables and database.
