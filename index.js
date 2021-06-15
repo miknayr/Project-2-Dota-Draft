@@ -36,7 +36,11 @@ app.use('/heroes', require('./routes/heroes'))
 /////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
 // TEAMS
 
-app.use('/team', require('./routes/teams'));
+app.use('/teams', require('./routes/teams'));
+
+// USERS
+
+app.use('/users', require('./routes/users'));
 
 
 app.listen(PORT, () => {

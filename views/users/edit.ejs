@@ -6,7 +6,7 @@
   //
   <a href="/users">Users</a>
 </p>
-<form method="POST" action="/team/edit/<%= team.id %>/?_method=PUT">
-  <input type="text" value="<%= team.team_name %>" name="teamName" id='name' required>
+<form method="POST" action="/users/edit/<%= users.id %>/?_method=PUT">
+  <input type="text" value="<%= users.user_name %>" name="userName" id='name' required>
   <button class="btn btn-primary" type="submit">Save</button>
 </form> 

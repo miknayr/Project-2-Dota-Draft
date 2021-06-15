@@ -1,0 +1,26 @@
+<h1 class="text-center">Saved Comps</h2>
+  <p class="text-center">
+    <a href="/">Home</a>
+    // 
+    <a href="/teams">Saved Teams</a>
+    //
+    <a href="/users">Users</a>
+  </p>
+
+
+<div class='groupgroup'>
+  <% users.forEach(users => { %>
+    <div>
+          <div  >
+            <p><%= users.dataValues.user_name %></p>  
+          </div>
+
+          <div >
+            <form method="GET" action="/users/edit/<%= users.dataValues.id %>">
+              <button class="btn btn-primary" name="edit" type="submit">Edit</button>
+            </form>
+          </div> 
+    </div>
+    <% }) %> 
+</div>
+

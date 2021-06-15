@@ -19,10 +19,9 @@ router.get('/', (req, res) => {
 })
 
 // POST /team - receive the name of the team and add it to the database
-
 router.post('/', (req, res) => {
   // console.log("post request to /team")
-  console.log("*** /team POST req.body: ", req.body)  
+  console.log("*** /teams POST req.body: ", req.body)  
   db.team.findOrCreate({
     where: {
       team_name: req.body.teamName,
@@ -45,6 +44,7 @@ router.post('/', (req, res) => {
   res.redirect("/")
 })
 
+//GET ID of team ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 router.get('/edit/:id', (req, res) => {
   // TODO: Get all records from the DB and render to view
   // res.send('👋 This is a test 👋')
@@ -61,8 +61,10 @@ router.get('/edit/:id', (req, res) => {
   })
 })
 
+
+// EDIT/UPDATE ROUTE~~~~~~~~~
 router.put('/edit/:id', (req,res) => {
-  console.log('*** /team/edit PUT !!!', req.body, req.body.teamName)
+  console.log('*** /teams/edit PUT !!!', req.body, req.body.teamName)
   db.team.update({
     team_name: req.body.teamName // <-- current name, to be changed.
   }, {
@@ -72,10 +74,12 @@ router.put('/edit/:id', (req,res) => {
   })
   .then(() => {
     console.log('*** db.team.update successfull')
-    res.redirect(`/team/edit/${req.params.id}`)
+    res.redirect(`/teams/`)
   }); 
 });
 
+
+// DELETE ROUTE~~~~~~~~~~~~
 router.delete('/delete/:id', (req, res) => {
   db.team.destroy({
     where: { id: req.params.id }
@@ -83,7 +87,7 @@ router.delete('/delete/:id', (req, res) => {
   .then(numRowsDeleted => {
     console.log(numRowsDeleted)
     // do something when done deleting
-    res.redirect('/team')
+    res.redirect('/teams')
   });
 } )
 

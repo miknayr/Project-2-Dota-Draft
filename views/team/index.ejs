@@ -2,18 +2,26 @@
 <p class="text-center">
   <a href="/">Home</a>
   // 
-  <a href="/team">Saved Teams</a>
+  <a href="/teams">Saved Teams</a>
+  //
+  <a href="/users">Users</a>
 </p>
 
 <div class='container groupgroup'>
   <% teams.forEach(team => { %>
-    <div class="row justify-content-md-center" style="margin-bottom: 20px;">
-      <div class="well">
-          <p><%= team.dataValues.team_name %></p>  
-      </div>
+      <div class="row justify-content-md-center" style="margin-bottom: 20px;">
+          <div class="col">
+            <p><%= team.dataValues.team_name %></p>  
+          </div>
+
+      <div class="col">
+            <form method="GET" action="/teams/edit/<%= team.dataValues.id %>">
+              <button class="btn btn-primary" name="edit" type="submit">Edit</button>
+            </form>
+      </div> 
 
       <div class="container index" id="dotaSet">
-        <div class="col dotaHeroCard">
+          <div class="col dotaHeroCard">
           <p> <%= team.dataValues.hero_1 %></p>
           <img src="http://cdn.dota2.com/<%= team.dataValues.hero_1_img %>" width="100px">
         </div> 
@@ -41,6 +49,7 @@
         <form method="POST" action="/team/delete/<%= team.dataValues.id %>/?_method=DELETE">
           <button class="btn btn-primary" name="delete" type="submit">Delete</button>
         </form>
+
       </div>
     </div>
   <% }) %> 
