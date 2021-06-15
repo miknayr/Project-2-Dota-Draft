@@ -23,10 +23,30 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
-  console.log(req.body)
-  res.send('🙂 This is a test 🙂')
-  
-  // res.redirect('/')
+  console.log("post request to /team")
+  console.log("***", req.body)
+  // console.log(req.body)
+  // TODO: Get form data and add a new record to DB
+  const selectedTeamComp = [];
+  selectedTeamComp.push(req.body.heros0,req.body.heros1,req.body.heros2,req.body.heros3,req.body.heros4)
+  console.log("selected team comp: " + selectedTeamComp)
+    selectedTeamComp.forEach(hero => {
+      console.log("selected team heroes 🌎: " + hero)
+      db.team.findOrCreate({
+        where: {
+          team_name: req.body.teamName,
+          hero_1:req.body.heros0,
+          hero_2:req.body.heros1,
+          hero_3:req.body.heros2,
+          hero_4:req.body.heros3,
+          hero_5:req.body.heros4
+        }
+      })
+      .then(([name, created]) => {
+        console.log(`We added ${req.body.teamName} to our roster!🐊🐊🐊🐊🐊🐊🐊🐊🐊`)
+      }).catch(err => console.log(err))
+    })
+  res.redirect("/")
 })
 
 // router.put('/edit', (req,res) => {

@@ -18,28 +18,29 @@ router.get('/', (req, res) => {
 
 // POST /teams - receive the name of the team and add it to the database
 router.post('/', (req, res) => {
-
-  // TODO: Get form data and add a new record to DB
-  const selectedTeamComp = [];
-  selectedTeamComp.push(req.body.heros0,req.body.heros1,req.body.heros2,req.body.heros3,req.body.heros4)
-  // console.log("selected team comp: " + selectedTeamComp)
-    selectedTeamComp.forEach(hero => {
-      console.log("selected team heroes 🌎: " + hero)
-      db.team.findOrCreate({
-        where: {
-          name: req.body.teamName,
-          hero_1:req.body.heros0,
-          hero_2:req.body.heros1,
-          hero_3:req.body.heros2,
-          hero_4:req.body.heros3,
-          hero_5:req.body.heros4
-        }
-      })
-    .then(([name, created]) => {
-      console.log(`We added ${req.body.teamName} to our roster!🐊🐊🐊🐊🐊🐊🐊🐊🐊`)
-    }).catch(err => console.log(err))
-})
-  res.redirect("/")
+  console.log('this is the best test')
+  // console.log("post request to /team")
+  // // TODO: Get form data and add a new record to DB
+  // const selectedTeamComp = [];
+  // selectedTeamComp.push(req.body.heros0,req.body.heros1,req.body.heros2,req.body.heros3,req.body.heros4)
+  // // console.log("selected team comp: " + selectedTeamComp)
+  //   selectedTeamComp.forEach(hero => {
+  //     // console.log("selected team heroes 🌎: " + hero)
+  //     db.team.findOrCreate({
+  //       where: {
+  //         name: req.body.teamName,
+  //         hero_1:req.body.heros0,
+  //         hero_2:req.body.heros1,
+  //         hero_3:req.body.heros2,
+  //         hero_4:req.body.heros3,
+  //         hero_5:req.body.heros4
+  //       }
+  //     })
+  //     .then(([name, created]) => {
+  //       console.log(`We added ${req.body.teamName} to our roster!🐊🐊🐊🐊🐊🐊🐊🐊🐊`)
+  //     }).catch(err => console.log(err))
+  //   })
+  // res.redirect("/")
 });
 
 module.exports = router;

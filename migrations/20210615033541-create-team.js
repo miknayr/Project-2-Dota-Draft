@@ -15,19 +15,19 @@ module.exports = {
         type: Sequelize.STRING
       },
       hero_1: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       hero_2: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       hero_3: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       hero_4: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       hero_5: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

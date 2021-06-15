@@ -9,7 +9,7 @@ refer back to the image
 
 - createdb dota2
 - sequelize model:create --name user --attributes user_name:STRING
-- sequelize model:create --name team --attributes userId:INTEGER,team_name:STRING,hero_1:INTEGER,hero_2:INTEGER,hero_3:INTEGER,hero_4:INTEGER,hero_5:INTEGER
+- sequelize model:create --name team --attributes userId:INTEGER,team_name:STRING,hero_1:STRING,hero_2:STRING,hero_3:STRING,hero_4:STRING,hero_5:STRING
 - 
 
 write the models

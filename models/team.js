@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+     static associate(models) {
       // define association here
       models.team.belongsTo(models.user)
     }
@@ -17,11 +17,11 @@ module.exports = (sequelize, DataTypes) => {
   team.init({
     userId: DataTypes.INTEGER,
     team_name: DataTypes.STRING,
-    hero_1: DataTypes.INTEGER,
-    hero_2: DataTypes.INTEGER,
-    hero_3: DataTypes.INTEGER,
-    hero_4: DataTypes.INTEGER,
-    hero_5: DataTypes.INTEGER
+    hero_1: DataTypes.STRING,
+    hero_2: DataTypes.STRING,
+    hero_3: DataTypes.STRING,
+    hero_4: DataTypes.STRING,
+    hero_5: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'team',
