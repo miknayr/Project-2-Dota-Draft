@@ -5,7 +5,7 @@ const layouts = require('express-ejs-layouts')
 const axios = require('axios'); 
 const app = express()
 const PORT = process.env.PORT
-const db = ('./models');
+const db = require('./models');
 const rowdy = require('rowdy-logger')
 const rowdyResults = rowdy.begin(app)
 const fs = require('fs')
@@ -23,10 +23,20 @@ app.use(methodOverride('_method'))
 app.get('/', (req, res) => {
   let dotaUrl = 'https://api.opendota.com/api/heroStats';
   // Use request to call the API
-  axios.get(dotaUrl).then(apiResponse => {
-    let dotaData = apiResponse.data;
-    res.render('index', { dotaData: dotaData });
-  })
+  // axios.get(dotaUrl).then(apiResponse => {
+  //   let dotaData = apiResponse.data;
+  //   res.render('index', { dotaData: dotaData });
+  // })
+
+  axios.get(dotaUrl)
+    .then(apiResponse => {
+      db.user.findAll()
+      .then((users) => {
+        console.log('*** /user teams data: ', users);
+        
+          res.render('index', { dotaData: apiResponse.data, users: users });
+        })
+    })
 })
 
 /////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~

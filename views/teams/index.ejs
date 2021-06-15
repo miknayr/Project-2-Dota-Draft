@@ -9,16 +9,20 @@
 
 <div class='container groupgroup'>
   <% teams.forEach(team => { %>
-      <div class="row justify-content-md-center" style="margin-bottom: 20px;">
-          <div class="col">
-            <p><%= team.dataValues.team_name %></p>  
-          </div>
+  <div class="row  index justify-content-md-center" style="margin-bottom: 20px;">
+         
+    <div class="titleEdit">
 
-      <div class="col">
+      <div >
+        <p><%= team.dataValues.team_name %></p>  
+      </div>
+
+      <div>
             <form method="GET" action="/teams/edit/<%= team.dataValues.id %>">
-              <button class="btn btn-primary" name="edit" type="submit">Edit</button>
+              <button class="btn" name="edit" type="submit">Edit</button>
             </form>
       </div> 
+    </div>
 
       <div class="container index" id="dotaSet">
           <div class="col dotaHeroCard">
@@ -46,11 +50,11 @@
           <img src="http://cdn.dota2.com/<%= team.dataValues.hero_5_img %>" width="100px">
         </div>  
         
-        <form method="POST" action="/team/delete/<%= team.dataValues.id %>/?_method=DELETE">
-          <button class="btn btn-primary" name="delete" type="submit">Delete</button>
+        <form method="POST" action="/teams/delete/<%= team.dataValues.id %>/?_method=DELETE">
+          <button class="btn" name="delete" type="submit">Delete</button>
         </form>
 
       </div>
-    </div>
+  </div>
   <% }) %> 
 </div>

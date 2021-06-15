@@ -24,17 +24,8 @@ router.get('/', (req, res) => {
 //   console.log("*** /team POST req.body: ", req.body)  
 //   db.team.findOrCreate({
 //     where: {
-//       team_name: req.body.teamName,
-//       hero_1: req.body.heros0,
-//       hero_2: req.body.heros1,
-//       hero_3: req.body.heros2,
-//       hero_4: req.body.heros3,
-//       hero_5: req.body.heros4,
-//       hero_1_img: req.body.heroImage0,
-//       hero_2_img: req.body.heroImage1,
-//       hero_3_img: req.body.heroImage2,
-//       hero_4_img: req.body.heroImage3,
-//       hero_5_img: req.body.heroImage4
+//       username: req.body.teamName,
+
 //     }
 //   })
 //   .then(([name, created]) => {
@@ -79,17 +70,17 @@ router.put('/edit/:id', (req,res) => {
 });
 
 
-// // DELETE ROUTE~~~~~~~~~~~~
-// router.delete('/delete/:id', (req, res) => {
-//   db.team.destroy({
-//     where: { id: req.params.id }
-//   })
-//   .then(numRowsDeleted => {
-//     console.log(numRowsDeleted)
-//     // do something when done deleting
-//     res.redirect('/team')
-//   });
-// } )
+// DELETE ROUTE~~~~~~~~~~~~
+router.delete('/delete/:id', (req, res) => {
+  db.user.destroy({
+    where: { id: req.params.id }
+  })
+  .then(numRowsDeleted => {
+    console.log(numRowsDeleted)
+    // do something when done deleting
+    res.redirect('/users')
+  });
+} )
 
 
 

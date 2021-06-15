@@ -16,15 +16,17 @@ const db = require("./models");
 // db.team.sync({ alter: true })
 
 
-db.user.create({
-    user_name: 'pikachu',
-  }).then(user => {
-    console.log('Created: ', user.user_name)
-    db.user.findOne({
-      where: {
-        user_name: user.user_name
-      }
-    }).then(userFound => {
-      console.log('Found: ', userFound.user_name)
-    })
-  })
+// db.user.create({
+//     user_name: 'pikachu',
+//   }).then(user => {
+//     console.log('Created: ', user.user_name)
+//     db.user.findOne({
+//       where: {
+//         user_name: user.user_name
+//       }
+//     }).then(userFound => {
+//       console.log('Found: ', userFound.user_name)
+//     })
+//   })
+
+console.log(user.dataValues.user_name)

@@ -217,8 +217,20 @@ router.delete('/delete', (req, res) => {
 
 
 
-
+https://stackoverflow.com/questions/45470020/pass-value-from-db-to-dropdown-menu
 
 module.exports = router
 
 // above this
+
+
+add this into views>teams>edit.ejs
+<!-- think about this -->
+<!-- <select class="form-control" id="sel1">
+  <% for(var i=0; i < dropdownVals.length; i++) { %>
+     <option><%= dropdownVals[i] %></option>
+  <% } %>
+  </select> -->
+
+  route - >teams.js 
+  line 21

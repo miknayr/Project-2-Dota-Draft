@@ -7,7 +7,7 @@
     <a href="/users">Users</a>
   </p>
 <div class="container groupgroup" >
-  <form method="POST" action="/team">
+  <form method="POST" action="/teams">
     <div class="row justify-content-md-center">
       <div class="col" id="comp">
         <input class="compCell" name="hero1" cellId="1">
@@ -18,9 +18,18 @@
       </div>
 
       <input type="text" name="teamName" id='name' required>
-      <button class="btn btn-primary" type="submit">Save</button>
+      <button class="btn" type="submit">Save</button>
 
+      <select name="userId" id="cars">
+        <% users.forEach(users => { %>
+        <option value="<%= users.dataValues.id %>"> <%= users.dataValues.user_name %> </option>
+        
+       
+        <% }) %> 
+
+      </select>
     </div>
+
 
   </form>
 </div>

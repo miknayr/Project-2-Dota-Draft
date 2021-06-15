@@ -8,19 +8,37 @@
   </p>
 
 
-<div class='groupgroup'>
+  <div class="groupgroup">
+    <form method="POST" action="/teams">
+      <input type="text" name="userName" id='name' required>
+      <button class="btn " type="submit">Save</button>
+    </form>
+</div> 
+
+
+
+
+<div class='container groupgroup'>
   <% users.forEach(users => { %>
-    <div>
-          <div  >
-            <p><%= users.dataValues.user_name %></p>  
-          </div>
+  <div class="row index titleEdit" style="margin-bottom: 20px;">
+     
+        <div class="col" >
+          <p><%= users.dataValues.user_name %></p>   
+        </div>
+ <br>
+    <div class="container index " id="dotaSet">
+        <div class="col" >
+          <form method="GET" action="/users/edit/<%= users.dataValues.id %>">
+            <button class="btn" name="edit" type="submit">Edit</button>
+          </form>
+        </div> 
+<br>
+        <form method="POST" action="/users/delete/<%= users.dataValues.id %>/?_method=DELETE">
+          <button class="btn" name="delete" type="submit">Delete</button>
+        </form>
+      </div>
+  </div>
+ 
 
-          <div >
-            <form method="GET" action="/users/edit/<%= users.dataValues.id %>">
-              <button class="btn btn-primary" name="edit" type="submit">Edit</button>
-            </form>
-          </div> 
-    </div>
-    <% }) %> 
+  <% }) %> 
 </div>
-

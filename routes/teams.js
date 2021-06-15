@@ -9,14 +9,30 @@ router.get('/', (req, res) => {
   // TODO: Get all records from the DB and render to view
   // res.send('👋 This is a test 👋')
   db.team.findAll()
+
   .then((teams) => {
     // console.log('*** /team teams data: ', teams);
-    res.render('./team/index', {teams: teams})
+    res.render('./teams/index', {teams: teams})
   })
   .catch(err => {
     console.log(err)
   })
 })
+
+// think about this // 
+// router.get('/', function(req, res, next) {
+//   sql.connect(config).then(() => {
+//       return sql.query`select Project_Type_Desc from Project_Type`
+//   }).then(result => {
+//       console.log(result)
+//       // Pass the DB result to the template
+//       res.render('newProject', {dropdownVals: result})
+//   }).catch(err => {
+//       console.log(err)
+//   })
+// });
+// think about this
+
 
 // POST /team - receive the name of the team and add it to the database
 router.post('/', (req, res) => {
@@ -34,7 +50,8 @@ router.post('/', (req, res) => {
       hero_2_img: req.body.heroImage1,
       hero_3_img: req.body.heroImage2,
       hero_4_img: req.body.heroImage3,
-      hero_5_img: req.body.heroImage4
+      hero_5_img: req.body.heroImage4,
+      userId: req.body.userId
     }
   })
   .then(([name, created]) => {
@@ -54,7 +71,7 @@ router.get('/edit/:id', (req, res) => {
     }
   })
   .then((team) => {
-    res.render('team/edit', { team: team })
+    res.render('teams/edit', { team: team })
   })
   .catch(err => {
     console.log(err)

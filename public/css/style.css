@@ -29,6 +29,12 @@
 
 .groupgroup {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
+}
+
+.titleEdit {
+  display:flex;
+  flex-wrap:wrap
 }
