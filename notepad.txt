@@ -12,6 +12,16 @@ refer back to the image
 - sequelize model:create --name team --attributes userId:INTEGER,team_name:STRING,hero_1:STRING,hero_2:STRING,hero_3:STRING,hero_4:STRING,hero_5:STRING
 - 
 
+   static associate(models) {
+      // define association here
+      models.team.belongsTo(models.user)
+    }
+
+       static associate(models) {
+      // define association here
+      models.user.hasMany(models.team)
+    }
+
 write the models
 
 write the routes

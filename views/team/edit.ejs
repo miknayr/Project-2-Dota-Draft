@@ -1,0 +1,9 @@
+<h1 class="text-center"> Dota Heroes </h1>
+<p class="text-center">
+  <a href="/">home</a>
+</p>
+<form method="POST" action="/team/edit/<%= team.id %>/?_method=PUT">
+
+    <input type="text" value="<%= team.team_name %>" name="teamName" id='name' required>
+    <button class="btn btn-primary" type="submit">Save</button>
+</form> 

@@ -13,6 +13,7 @@ const methodOverride = require('method-override')
 
 
 //middleware
+
 app.set('view engine', 'ejs')
 app.use(layouts)
 app.use(express.static(__dirname+'/public'))
@@ -29,28 +30,13 @@ app.get('/', (req, res) => {
 })
 
 /////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
-
-// const heroController = require('./controllers/heroes');
-
-// GET /heroes/:id -- READ one specific hero~~~~~~~~~~
-// app.get('/heroes/:id', heroController.hero_show_get_id) 
-app.use('/heroes', require('./controllers/heroes'))
-
-
+// HEROES
+app.use('/heroes', require('./routes/heroes'))
 
 /////~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~//~~~~~~~~
-// const teamsController = require('./controllers/team')
+// TEAMS
 
-// // GET /prehistoric-creatures -- READ all pcs ~~~~~~~~~
-app.use('/team', require('./controllers/team'))
-
-// app.get('/team', require('./routes/teams'));
-
-// app.get('/teams/:team_id', (req, res) => {})
-// app.get('/teams/compare', (req, res) => {})
-
-// Imports all routes from the pokemon routes file
-
+app.use('/team', require('./routes/teams'));
 
 
 app.listen(PORT, () => {
