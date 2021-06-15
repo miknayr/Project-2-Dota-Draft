@@ -18,22 +18,29 @@ router.get('/', (req, res) => {
   })
 })
 
-// // POST /team - receive the name of the team and add it to the database
-// router.post('/', (req, res) => {
-//   // console.log("post request to /team")
-//   console.log("*** /team POST req.body: ", req.body)  
-//   db.team.findOrCreate({
-//     where: {
-//       username: req.body.teamName,
-
-//     }
-//   })
-//   .then(([name, created]) => {
-//     console.log(`We added ${req.body.teamName} to our roster!🐊🐊🐊🐊🐊🐊🐊🐊🐊`)
-//   }).catch(err => console.log(err))
+// POST /team - receive the name of the team and add it to the database
+router.post('/', (req, res) => {
+  // console.log("post request to /team")
+  console.log("*** /team POST req.body: ", req.body)  
+  db.user.create({
+    user_name: req.body.userName
+  }).then(user => {
+    console.log('🐊🐊🐊🐊🐊🐊🐊🐊 Created: ', user.user_name )
+    db.user.findOne({
+      where: {
+        user_name: user.user_name
+      }
+    }).then(userFound => {
+      console.log('Found: ', userFound.user_name)
+    })
+  }).catch(err => console.log(err))
     
-//   res.redirect("/")
-// })
+  res.redirect("/users")
+})
+
+
+
+
 
 //GET ID of team ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 router.get('/edit/:id', (req, res) => {

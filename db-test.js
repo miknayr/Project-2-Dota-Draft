@@ -1,4 +1,4 @@
-const db = require("./models");
+// const db = require("./models");
 // const TeamController = require("./app/controllers/team.controller");
 // const HeroesController = require("./app/controllers/heroes.controller");
 
@@ -29,4 +29,4 @@ const db = require("./models");
 //     })
 //   })
 
-console.log(user.dataValues.user_name)
+console.log(users.dataValues.user_name)
