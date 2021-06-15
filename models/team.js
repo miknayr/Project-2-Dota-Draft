@@ -27,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
     hero_3_img: DataTypes.STRING,
     hero_4_img: DataTypes.STRING,
     hero_5_img: DataTypes.STRING
-
   }, {
     sequelize,
     modelName: 'team',

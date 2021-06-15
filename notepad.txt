@@ -9,15 +9,28 @@ refer back to the image
 
 - createdb dota2
 - sequelize model:create --name user --attributes user_name:STRING
-- sequelize model:create --name team --attributes userId:INTEGER,team_name:STRING,hero_1:STRING,hero_2:STRING,hero_3:STRING,hero_4:STRING,hero_5:STRING
-- 
+- sequelize model:create --name team --attributes userId:INTEGER,team_name:STRING,hero_1:STRING,hero_2:STRING,hero_3:STRING,hero_4:STRING,hero_5:STRING,hero_1_img:STRING,hero_2_img:STRING,hero_3_img:STRING,hero_4_img:STRING,hero_5_img:STRING
+go to vscode
+- check your model associations
+go back to terminal
+- sequelize db:migrate
+go to psql
+- psql
+- check database
+- connect to database
+- check with select * from
 
-   static associate(models) {
+
+for team
+
+     static associate(models) {
       // define association here
       models.team.belongsTo(models.user)
     }
 
-       static associate(models) {
+for users
+
+    static associate(models) {
       // define association here
       models.user.hasMany(models.team)
     }

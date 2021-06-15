@@ -29,6 +29,21 @@ module.exports = {
       hero_5: {
         type: Sequelize.STRING
       },
+      hero_1_img: {
+        type: Sequelize.STRING
+      },
+      hero_2_img: {
+        type: Sequelize.STRING
+      },
+      hero_3_img: {
+        type: Sequelize.STRING
+      },
+      hero_4_img: {
+        type: Sequelize.STRING
+      },
+      hero_5_img: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

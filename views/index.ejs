@@ -102,10 +102,8 @@
 const dotaData = <%- JSON.stringify(dotaData) %>;
 const teamComp = []
 const alreadyAdded = {};
-
 const heroCards = document.querySelectorAll('div.dotaHeroCard');
 const teamCompList = document.getElementById('comp');
-
 // bind click events to hero cards
 heroCards.forEach((heroCard) => {
   const props = heroCard.dataset;
@@ -119,7 +117,6 @@ heroCards.forEach((heroCard) => {
     )
   })
 })
-
 function addHero(hero) {
   if (teamComp.length >= 5) {
     console.log('team is full')
@@ -135,20 +132,15 @@ function addHero(hero) {
   console.log('added hero: ', hero.name, hero); // <--- confirm add
   render();// <--- redraws
 }
-
 function removeHero(heroId, index) {
   const removed = teamComp.splice(index, 1); // <--- removes hero
   console.log('removed hero', removed[0].name, ' at index', index); // <--- console log to confirm
   alreadyAdded[heroId] = false; // < --- check the state if it exists or not,
   render(); // <--- redraws
 }
-
-
 function render() {
   console.log(` starting the render function with ${teamComp.length} hero(s)`) // <-- check if the render works
   teamCompList.innerHTML = ''; //<--- DOM manipulate to clear the list
-
-
   // this fills the teamCompList with heros based on the teamComp array.
   teamComp.forEach ((hero, index) => { // <--- this is for display each hero in the array
     const heroCard = document.createElement('div');// <--- this is making a new div that is the cell with the hero, visually
@@ -156,34 +148,28 @@ function render() {
     heroCard.classList.add('teamCompHeroCard') // <--- this is for adding the hero card in the cell above
     heroCard.setAttribute('data-id', hero.id); // <--- this is getting the cell with the hero card, an id
     heroCard.setAttribute('name', hero.name);
-
     const nameLabel= document.createElement('input'); // <--- this is making a new div with name of the hero in the cell.
     nameLabel.setAttribute('name', 'heros' + index) 
     nameLabel.setAttribute('value', hero.name)
     nameLabel.innerHTML = hero.name; // <--- hero name is being pulled from the API // dota data in the for each function at the top
     heroCard.appendChild(nameLabel); // <--- appendChild adds reference to the nameLabel
-
     const heroImage = document.createElement('img'); // <--- this is making the image of the hero for the cell 
     heroImage.setAttribute('width', 100); // <--- setting its width so it fits evenly.
     heroImage.setAttribute('src', `http://cdn.dota2.com/${hero.img}`) // <--- this is the source of the image, in an interpolated string using the $ sign
     heroCard.appendChild(heroImage);
-
     const imgInput = document.createElement('input')
     imgInput.setAttribute('name', 'heroImage' + index)
     imgInput.setAttribute('value', hero.img)
     imgInput.style.display = 'none'
     heroCard.appendChild(imgInput)
-
     teamCompList.appendChild(heroCard); // <--- this is adding all this to the hero card (individual) that is being created in the for loop every time you click
   })
-
   // this for loop is to fill the rest of the team comp list display with empty cards
   for (let i = 0; i < 5 -teamComp.length; i++) { 
     const placeholderCard = document.createElement('div') // <--- variable for the div
     placeholderCard.classList.add('compCell') // <-- creating the div
     teamCompList.appendChild(placeholderCard) // <-- adds  the created div (placeholdercard) into teamcomplist with append child.
   }
-
   // add "click event" remove hero to each card
   const teamCompListCards = document.querySelectorAll('div.teamCompHeroCard');
   
@@ -195,6 +181,4 @@ function render() {
     });
   });
 }
-
-
 </script>
