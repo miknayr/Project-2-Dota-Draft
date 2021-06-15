@@ -3,26 +3,50 @@
   <a href="/">home</a>
 </p>
 <div class='container'>
-  <% team.forEach(teams => { %>
-      <div class=" well">
-          <h2><%= team.name %></h2>  
+  <% teams.forEach(team => { %>
+    <div style="margin-bottom: 20px;">
+      <div class="well">
+          <h2><%= team.dataValues.team_name %></h2>  
       </div>
-      <div class="container index" id="dotaSet">
-        <% dotaData.forEach(function(hero) { %>  
-          <div 
-            class="col dotaHeroCard" 
-            data-id="<%= hero.hero_id %>"
-            data-name="<%= hero.localized_name %>"
-            data-img="<%= hero.img %>"
-          >
-            <p> <%= hero.localized_name %> <%= hero.hero_id %></p>
-            <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
-          </div>  
-        <% }) %>
-      </div>
-      <form method="DELETE" action="/team">
 
+      <div class="container index" id="dotaSet">
+        <div class="col dotaHeroCard">
+          <p> <%= team.dataValues.hero_1 %></p>
+          <!-- <img src="http://cdn.dota2.com/<%= team.dataValues.hero_1_img %>" width="100px"> -->
+        </div>  
+      </div>
+
+      <div class="container index" id="dotaSet">
+        <div class="col dotaHeroCard">
+          <p> <%= team.dataValues.hero_2 %></p>
+          <!-- <img src="http://cdn.dota2.com/<%= team.dataValues.hero_1_img %>" width="100px"> -->
+        </div>  
+      </div>
+
+      <div class="container index" id="dotaSet">
+        <div class="col dotaHeroCard">
+          <p> <%= team.dataValues.hero_3 %></p>
+          <!-- <img src="http://cdn.dota2.com/<%= team.dataValues.hero_1_img %>" width="100px"> -->
+        </div>  
+      </div>
+
+      <div class="container index" id="dotaSet">
+        <div class="col dotaHeroCard">
+          <p> <%= team.dataValues.hero_4 %></p>
+          <!-- <img src="http://cdn.dota2.com/<%= team.dataValues.hero_1_img %>" width="100px"> -->
+        </div>  
+      </div>
+
+      <div class="container index" id="dotaSet">
+        <div class="col dotaHeroCard">
+          <p> <%= team.dataValues.hero_5 %></p>
+          <!-- <img src="http://cdn.dota2.com/<%= team.dataValues.hero_1_img %>" width="100px"> -->
+        </div>  
+      </div>
+
+      <form method="POST" action="/team/delete/<%= team.dataValues.id %>/?_method=DELETE">
         <button class="btn btn-primary" name="delete" type="submit">Delete</button>
       </form>
-    <% }) %> 
+    </div>
+  <% }) %> 
 </div>

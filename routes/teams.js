@@ -4,20 +4,21 @@ const db = require('../models');
 const axios = require('axios');
 const app = express()
 
-// GET /teams - return a page with saved comp
+// GET /team - return a page with saved comp
 router.get('/', (req, res) => {
   // TODO: Get all records from the DB and render to view
   // res.send('👋 This is a test 👋')
   db.team.findAll()
-  .then((name) => {
-    res.redirect('./team/index', { name: name})
+  .then((teams) => {
+    // console.log('*** /team teams data: ', teams);
+    res.render('./team/index', {teams: teams})
   })
   .catch(err => {
     console.log(err)
   })
 })
 
-// POST /teams - receive the name of the team and add it to the database
+// POST /team - receive the name of the team and add it to the database
 
 router.post('/', (req, res) => {
   // console.log("post request to /team")
@@ -70,14 +71,14 @@ router.put('/edit/:id', (req,res) => {
   }); 
 });
 
-router.delete('/delete', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   db.team.destroy({
-    where: { team_name: req.body.delete }
+    where: { id: req.params.id }
   })
-  .then(numRowsDeleted=>{
-      console.log(numRowsDeleted)
+  .then(numRowsDeleted => {
+    console.log(numRowsDeleted)
     // do something when done deleting
-      process.exit()
+    res.redirect('/team')
   });
 } )
 
