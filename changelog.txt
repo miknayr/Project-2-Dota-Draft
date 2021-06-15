@@ -57,3 +57,6 @@ stuck once again.
 
 6/13 -7pm update;
 heroes can now be added into database and have a name associated with it.
+
+6/14 - 4pm update; 
+filtered heroes to be organized by attributes

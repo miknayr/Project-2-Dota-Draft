@@ -6,17 +6,29 @@
   
 }
 .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
 #comp {
- 
+ display: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
 }
 .compCell {
   width: 100px;
+  height: 100px;
+  margin: 10px 10px;
   border:2px solid black
+}
+
+
+
+.groupgroup {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }

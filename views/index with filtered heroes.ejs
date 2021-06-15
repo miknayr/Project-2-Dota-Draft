@@ -22,20 +22,62 @@
 </div>
 
 <div class="container index">
-
-  <% dotaData.forEach(function(hero) { %>  
+  <div>strength:</div>
+ 
+  <% const strHeroes = dotaData.filter(function(hero) {
+    return hero.primary_attr === "str" 
+  }) %>
+  <% strHeroes.forEach(function(hero) { %>  
     <div 
       class="col dotaHeroCard" 
       data-id="<%= hero.hero_id %>"
       data-name="<%= hero.localized_name %>"
       data-img="<%= hero.img %>"
     >
-      <p> <%= hero.localized_name %> <%= hero.hero_id %></p>
+      <!-- <p> <%= hero.localized_name %> <%= hero.hero_id %></p> -->
       <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
     </div>  
   <% }) %>
 </div>
 
+<div class="container index">
+  <div>agility:</div>
+
+  <% const agiHeroes = dotaData.filter(function(hero) {
+    return hero.primary_attr === "agi" 
+  }) %>
+  <% agiHeroes.forEach(function(hero) { %>  
+    <div 
+      class="col dotaHeroCard" 
+      data-id="<%= hero.hero_id %>"
+      data-name="<%= hero.localized_name %>"
+      data-img="<%= hero.img %>"
+    >
+      <!-- <p> <%= hero.localized_name %> <%= hero.hero_id %></p> -->
+      <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
+    </div>  
+  <% }) %>
+</div>
+
+<div class="container index">
+  <div>intelligence:</div>
+  
+<% const intHeroes = dotaData.filter(function(hero) {
+  return hero.primary_attr === "int" 
+}) %>
+
+  <% intHeroes.forEach(function(hero) { %>  
+      <div 
+      class="col dotaHeroCard" 
+      data-id="<%= hero.hero_id %>"
+      data-name="<%= hero.localized_name %>"
+      data-img="<%= hero.img %>"
+      >
+      <!-- <p> <%= hero.localized_name %> <%= hero.hero_id %></p> -->
+      <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
+    </div> 
+    <% }) %>
+</div>
 
 
 <script>

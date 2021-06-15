@@ -23,36 +23,38 @@ router.get('/', (req, res) => {
 
 
 router.post('/', (req, res) => {
+  console.log(req.body)
   res.send('🙂 This is a test 🙂')
+  
   // res.redirect('/')
 })
 
-router.put('/edit', (req,res) => {
-  db.team.update({
-    name: req.body.teamName // <-- current name, to be changed.
-  }, {
-    where: {
-      name: req.body.query // <--- update from the form??
-    }
-  })
-  .then(numRowsChanged=>{
-      // Returns a value of how many rows were altered by this update
-      console.log(numRowsChanged)
-      process.exit()
-  });
-});
+// router.put('/edit', (req,res) => {
+//   db.team.update({
+//     name: req.body.teamName // <-- current name, to be changed.
+//   }, {
+//     where: {
+//       name: req.body.query // <--- update from the form??
+//     }
+//   })
+//   .then(numRowsChanged=>{
+//       // Returns a value of how many rows were altered by this update
+//       console.log(numRowsChanged)
+//       process.exit()
+//   });
+// });
 
 
-router.delete('/delete', (req, res) => {
-  db.team.destroy({
-    where: { name: req.body.delete }
-  })
-  .then(numRowsDeleted=>{
-      console.log(numRowsDeleted)
-    // do something when done deleting
-      process.exit()
-  });
-} )
+// router.delete('/delete', (req, res) => {
+//   db.team.destroy({
+//     where: { name: req.body.delete }
+//   })
+//   .then(numRowsDeleted=>{
+//       console.log(numRowsDeleted)
+//     // do something when done deleting
+//       process.exit()
+//   });
+// } )
 
 
 
