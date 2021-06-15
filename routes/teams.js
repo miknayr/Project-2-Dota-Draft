@@ -22,15 +22,20 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   // console.log("post request to /team")
-  console.log("***", req.body)  
+  console.log("*** /team POST req.body: ", req.body)  
   db.team.findOrCreate({
     where: {
       team_name: req.body.teamName,
-      hero_1:req.body.heros0,
-      hero_2:req.body.heros1,
-      hero_3:req.body.heros2,
-      hero_4:req.body.heros3,
-      hero_5:req.body.heros4
+      hero_1: req.body.heros0,
+      hero_2: req.body.heros1,
+      hero_3: req.body.heros2,
+      hero_4: req.body.heros3,
+      hero_5: req.body.heros4,
+      hero_1_img: req.body.heroImage0,
+      hero_2_img: req.body.heroImage1,
+      hero_3_img: req.body.heroImage2,
+      hero_4_img: req.body.heroImage3,
+      hero_5_img: req.body.heroImage4
     }
   })
   .then(([name, created]) => {

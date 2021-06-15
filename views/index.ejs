@@ -1,7 +1,10 @@
 <h1 class="text-center"> Dota Heroes </h1>
 <p class="text-center">
-  <a href="/">home</a>
+  <a href="/">Home</a>
+  // 
+  <a href="/team">Saved Teams</a>
 </p>
+
 <div class="container groupgroup" >
   <form method="POST" action="/team">
     <div class="row justify-content-md-center">
@@ -22,18 +25,65 @@
 </div>
 
 <div class="container index">
-
-  <% dotaData.forEach(function(hero) { %>  
+  <div>strength:</div>
+ 
+  <% const strHeroes = dotaData.filter(function(hero) {
+    return hero.primary_attr === "str" 
+  }) %>
+  <% strHeroes.forEach(function(hero) { %>  
     <div 
       class="col dotaHeroCard" 
       data-id="<%= hero.hero_id %>"
       data-name="<%= hero.localized_name %>"
       data-img="<%= hero.img %>"
     >
-      <p> <%= hero.localized_name %> <%= hero.hero_id %></p>
+      <!-- <p> <%= hero.localized_name %> <%= hero.hero_id %></p> -->
       <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
     </div>  
   <% }) %>
+</div>
+
+<br>
+
+<div class="container index">
+  <div>agility:</div>
+
+  <% const agiHeroes = dotaData.filter(function(hero) {
+    return hero.primary_attr === "agi" 
+  }) %>
+  <% agiHeroes.forEach(function(hero) { %>  
+    <div 
+      class="col dotaHeroCard" 
+      data-id="<%= hero.hero_id %>"
+      data-name="<%= hero.localized_name %>"
+      data-img="<%= hero.img %>"
+    >
+      <!-- <p> <%= hero.localized_name %> <%= hero.hero_id %></p> -->
+      <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
+    </div>  
+  <% }) %>
+</div>
+
+<br>
+
+<div class="container index">
+  <div>intelligence:</div>
+  
+<% const intHeroes = dotaData.filter(function(hero) {
+  return hero.primary_attr === "int" 
+}) %>
+
+  <% intHeroes.forEach(function(hero) { %>  
+      <div 
+      class="col dotaHeroCard" 
+      data-id="<%= hero.hero_id %>"
+      data-name="<%= hero.localized_name %>"
+      data-img="<%= hero.img %>"
+      >
+      <!-- <p> <%= hero.localized_name %> <%= hero.hero_id %></p> -->
+      <img src="http://cdn.dota2.com/<%= hero.img%>" width="100px">
+    </div> 
+    <% }) %>
 </div>
 
 
@@ -89,7 +139,6 @@ function render() {
   teamCompList.innerHTML = ''; //<--- DOM manipulate to clear the list
 
 
-  let i = 0
   // this fills the teamCompList with heros based on the teamComp array.
   teamComp.forEach ((hero, index) => { // <--- this is for display each hero in the array
     const heroCard = document.createElement('div');// <--- this is making a new div that is the cell with the hero, visually
@@ -99,8 +148,7 @@ function render() {
     heroCard.setAttribute('name', hero.name);
 
     const nameLabel= document.createElement('input'); // <--- this is making a new div with name of the hero in the cell.
-    nameLabel.setAttribute('name', 'heros'+[i]) 
-    i++
+    nameLabel.setAttribute('name', 'heros' + index) 
     nameLabel.setAttribute('value', hero.name)
     nameLabel.innerHTML = hero.name; // <--- hero name is being pulled from the API // dota data in the for each function at the top
     heroCard.appendChild(nameLabel); // <--- appendChild adds reference to the nameLabel
@@ -109,6 +157,12 @@ function render() {
     heroImage.setAttribute('width', 100); // <--- setting its width so it fits evenly.
     heroImage.setAttribute('src', `http://cdn.dota2.com/${hero.img}`) // <--- this is the source of the image, in an interpolated string using the $ sign
     heroCard.appendChild(heroImage);
+
+    const imgInput = document.createElement('input')
+    imgInput.setAttribute('name', 'heroImage' + index)
+    imgInput.setAttribute('value', hero.img)
+    imgInput.style.display = 'none'
+    heroCard.appendChild(imgInput)
 
     teamCompList.appendChild(heroCard); // <--- this is adding all this to the hero card (individual) that is being created in the for loop every time you click
   })

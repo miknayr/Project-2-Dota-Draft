@@ -21,7 +21,13 @@ module.exports = (sequelize, DataTypes) => {
     hero_2: DataTypes.STRING,
     hero_3: DataTypes.STRING,
     hero_4: DataTypes.STRING,
-    hero_5: DataTypes.STRING
+    hero_5: DataTypes.STRING,
+    hero_1_img: DataTypes.STRING,
+    hero_2_img: DataTypes.STRING,
+    hero_3_img: DataTypes.STRING,
+    hero_4_img: DataTypes.STRING,
+    hero_5_img: DataTypes.STRING
+
   }, {
     sequelize,
     modelName: 'team',
