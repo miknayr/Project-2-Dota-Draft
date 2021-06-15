@@ -8,7 +8,9 @@ const app = express()
 router.get('/', (req, res) => {
   // TODO: Get all records from the DB and render to view
   // res.send('👋 This is a test 👋')
-  db.user.findAll()
+  db.user.findAll({
+    include: [db.team]
+  })
   .then((users) => {
     console.log('*** /user teams data: ', users);
     res.render('./users/index', {users: users})
@@ -23,7 +25,7 @@ router.post('/', (req, res) => {
   // console.log("post request to /team")
   console.log("*** /team POST req.body: ", req.body)  
   db.user.create({
-    user_name: req.body.userName
+    user_name: req.body.userName 
   }).then(user => {
     console.log('🐊🐊🐊🐊🐊🐊🐊🐊 Created: ', user.user_name )
     db.user.findOne({

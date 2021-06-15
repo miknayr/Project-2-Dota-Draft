@@ -2,7 +2,7 @@
   <p class="text-center">
     <a href="/">Home</a>
     // 
-    <a href="/teams">Saved Teams</a>
+    <a href="/teams"> List of Saved Teams by Users</a>
     //
     <a href="/users">Users</a>
   </p>
@@ -19,24 +19,65 @@
 
 
 <div class='container groupgroup'>
-  <% users.forEach(users => { %>
+  <% users.forEach(user => { %>
   <div class="row index titleEdit" style="margin-bottom: 20px;">
      
         <div class="col" >
-          <p><%= users.dataValues.user_name %></p>   
+          <p><%= user.dataValues.user_name %></p>   
+
+          <% user.dataValues.teams.forEach( team => { %>
+            <% console.log('**************' + team)%> 
+            <div>
+              <p>Team Name: <%= team.team_name %> </p>  
+              
+              <div class="container index" id="dotaSet">
+                <div class="col dotaHeroCard">
+                  <p> <%= team.dataValues.hero_1 %></p>
+                  <img src="http://cdn.dota2.com/<%= team.dataValues.hero_1_img %>" width="100px">
+                </div> 
+                 
+                <div class="col dotaHeroCard">
+                  <p> <%= team.dataValues.hero_2 %></p>
+                  <img src="http://cdn.dota2.com/<%= team.dataValues.hero_2_img %>" width="100px">
+                </div>  
+                <div class="col dotaHeroCard">
+                  <p> <%= team.dataValues.hero_3 %></p>
+                  <img src="http://cdn.dota2.com/<%= team.dataValues.hero_3_img %>" width="100px">
+                </div>  
+                <div class="col dotaHeroCard">
+                  <p> <%= team.dataValues.hero_4 %></p>
+                  <img src="http://cdn.dota2.com/<%= team.dataValues.hero_4_img %>" width="100px">
+                </div>  
+                <div class="col dotaHeroCard">
+                  <p> <%= team.dataValues.hero_5 %></p>
+                  <img src="http://cdn.dota2.com/<%= team.dataValues.hero_5_img %>" width="100px">
+                </div>  
+                
+                <form method="POST" action="/teams/delete/<%= team.dataValues.id %>/?_method=DELETE">
+                  <button class="btn" name="delete" type="submit">Delete</button>
+                </form>
+              </div>
+
+            </div>
+
+          
+          <% }) %>
+          
         </div>
+
+
  <br>
 
 
 
     <div class="container index " id="dotaSet">
         <div class="col" >
-          <form method="GET" action="/users/edit/<%= users.dataValues.id %>">
+          <form method="GET" action="/users/edit/<%= user.dataValues.id %>">
             <button class="btn" name="edit" type="submit">Edit</button>
           </form>
         </div> 
 <br>
-        <form method="POST" action="/users/delete/<%= users.dataValues.id %>/?_method=DELETE">
+        <form method="POST" action="/users/delete/<%= user.dataValues.id %>/?_method=DELETE">
           <button class="btn" name="delete" type="submit">Delete</button>
         </form>
       </div>

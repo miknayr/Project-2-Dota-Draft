@@ -8,7 +8,9 @@ const app = express()
 router.get('/', (req, res) => {
   // TODO: Get all records from the DB and render to view
   // res.send('👋 This is a test 👋')
-  db.team.findAll()
+  db.team.findAll({
+    include: [db.user]
+  })
 
   .then((teams) => {
     // console.log('*** /team teams data: ', teams);
