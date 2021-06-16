@@ -1,4 +1,4 @@
-<h1 class="text-center">Dota Drafter</h2>
+<h1 class="text-center">Dota Draft Log</h2>
   <p class="text-center">
     <a href="/">Home</a>
     // 
@@ -25,7 +25,7 @@
               <% }) %> 
             </select>
             
-            <input type="text" name="teamName" id='name' required>
+            <input type="text" name="teamName" id='name' placeholder="Team Name" required>
             <button class="btn" type="submit">Save</button>
         </div>
 
@@ -37,8 +37,8 @@
 <br>
 <br>
 
-<div class="container index">
-  <div>strength:</div>
+<div class="container index heroGrouping">
+  <div>Strength:</div>
  
   <% const strHeroes = dotaData.filter(function(hero) {
     return hero.primary_attr === "str" 
@@ -58,8 +58,8 @@
 
 <br>
 
-<div class="container index">
-  <div>agility:</div>
+<div class="container index heroGrouping">
+  <div>Agility:</div>
 
   <% const agiHeroes = dotaData.filter(function(hero) {
     return hero.primary_attr === "agi" 
@@ -79,8 +79,8 @@
 
 <br>
 
-<div class="container index">
-  <div>intelligence:</div>
+<div class="container index heroGrouping">
+  <div>Intelligence:</div>
   
 <% const intHeroes = dotaData.filter(function(hero) {
   return hero.primary_attr === "int" 

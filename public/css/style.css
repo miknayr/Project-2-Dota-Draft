@@ -1,8 +1,25 @@
+@font-face {
+  font-family: 'radiance-font';
+  src: url(/fonts/radiance.woff) format('woff'), url(/fonts/radiance-semibold.woff) format('woff'), url(/fonts/Reaver-Bold.woff) format('woff'), url(/fonts/Reaver-SemiBold.woff) format('woff');
+  font-style: normal;
+  
+}
+
+body {
+ font-family: 'radiance-font';
+ background-color: grey;
+ font-weight: bold;
+
+}
+
+
 #dotaHeroCard {
   display: grid;
  
   width: auto;
   height: auto;
+
+
   
 }
 .container {
@@ -17,6 +34,7 @@
   display: grid;
   
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  
 
 }
 .compCell {
@@ -50,3 +68,32 @@
 
 }
 
+
+.userteams {
+ 
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+
+}
+
+.heroGrouping img {
+  transition: 1s ease;
+  }
+  .heroGrouping img:hover{
+    -webkit-transform: scale(0.8);
+    -ms-transform: scale(0.8);
+    transform: scale(0.8);
+    transition: 1s ease;
+    }
+
+    a:link {
+      color: white;
+    }
+    a:visited {
+      color: white;
+    }

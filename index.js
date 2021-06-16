@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     .then(apiResponse => {
       db.user.findAll()
       .then((users) => {
-        console.log('*** /user teams data: ', users);
+        // console.log('*** /user teams data: ', users);
         
           res.render('index', { dotaData: apiResponse.data, users: users });
         })
