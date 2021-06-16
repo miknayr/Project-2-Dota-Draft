@@ -53,7 +53,7 @@ app.use('/teams', require('./routes/teams'));
 app.use('/users', require('./routes/users'));
 
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   rowdyResults.print()
   console.log(`you have ${PORT} Gold to spend.`)
 })

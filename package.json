@@ -19,6 +19,7 @@
     "nodemon": "^2.0.7",
     "pg": "^8.6.0",
     "rowdy-logger": "^1.0.2",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0"
   }
 }
