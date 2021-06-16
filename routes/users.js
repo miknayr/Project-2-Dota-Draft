@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     include: [db.team]
   })
   .then((users) => {
-    console.log('*** /user teams data: ', users);
+    // console.log('*** /user teams data: ', users);
     res.render('./users/index', {users: users})
   })
   .catch(err => {
