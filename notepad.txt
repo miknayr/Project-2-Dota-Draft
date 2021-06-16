@@ -18,7 +18,7 @@ go to psql
 - psql
 - check database
 - connect to database
-- check with select * from
+- check with select * from (tables)
 
 
 for team

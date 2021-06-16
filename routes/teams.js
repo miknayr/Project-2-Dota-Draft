@@ -21,21 +21,6 @@ router.get('/', (req, res) => {
   })
 })
 
-// think about this // 
-// router.get('/', function(req, res, next) {
-//   sql.connect(config).then(() => {
-//       return sql.query`select Project_Type_Desc from Project_Type`
-//   }).then(result => {
-//       console.log(result)
-//       // Pass the DB result to the template
-//       res.render('newProject', {dropdownVals: result})
-//   }).catch(err => {
-//       console.log(err)
-//   })
-// });
-// think about this
-
-
 // POST /team - receive the name of the team and add it to the database
 router.post('/', (req, res) => {
   // console.log("post request to /team")

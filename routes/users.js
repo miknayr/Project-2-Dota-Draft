@@ -41,9 +41,6 @@ router.post('/', (req, res) => {
 })
 
 
-
-
-
 //GET ID of team ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 router.get('/edit/:id', (req, res) => {
   // TODO: Get all records from the DB and render to view
