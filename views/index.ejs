@@ -10,29 +10,32 @@
   <form method="POST" action="/teams">
     <div class="row justify-content-md-center">
       <div class="col" id="comp">
-        <input class="compCell" name="hero1" cellId="1">
-        <input class="compCell" name="hero2" cellId="2">
-        <input class="compCell" name="hero3" cellId="3">
-        <input class="compCell" name="hero4" cellId="4">
-        <input class="compCell" name="hero5" cellId="5">
+        <div class="compCell" name="hero1" cellId="1"></div>
+        <div class="compCell" name="hero2" cellId="2"></div>
+        <div class="compCell" name="hero3" cellId="3"></div>
+        <div class="compCell" name="hero4" cellId="4"></div>
+        <div class="compCell" name="hero5" cellId="5"></div>
       </div>
 
-      <input type="text" name="teamName" id='name' required>
-      <button class="btn" type="submit">Save</button>
+        <div class="formGroup">
 
-      <select name="userId" id="cars">
-        <% users.forEach(users => { %>
-        <option value="<%= users.dataValues.id %>"> <%= users.dataValues.user_name %> </option>
-        
-       
-        <% }) %> 
+          <select name="userId" id="cars">
+            <% users.forEach(users => { %>
+              <option value="<%= users.dataValues.id %>"> <%= users.dataValues.user_name %> </option>
+              <% }) %> 
+            </select>
+            
+            <input type="text" name="teamName" id='name' required>
+            <button class="btn" type="submit">Save</button>
+        </div>
 
-      </select>
     </div>
 
 
   </form>
 </div>
+<br>
+<br>
 
 <div class="container index">
   <div>strength:</div>
@@ -149,6 +152,7 @@ function render() {
     heroCard.setAttribute('data-id', hero.id); // <--- this is getting the cell with the hero card, an id
     heroCard.setAttribute('name', hero.name);
     const nameLabel= document.createElement('input'); // <--- this is making a new div with name of the hero in the cell.
+    nameLabel.style.width = '100px'
     nameLabel.setAttribute('name', 'heros' + index) 
     nameLabel.setAttribute('value', hero.name)
     nameLabel.innerHTML = hero.name; // <--- hero name is being pulled from the API // dota data in the for each function at the top

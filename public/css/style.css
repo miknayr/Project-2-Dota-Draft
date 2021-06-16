@@ -1,6 +1,6 @@
 #dotaHeroCard {
   display: grid;
-  border: 2px solid black;
+ 
   width: auto;
   height: auto;
   
@@ -15,6 +15,7 @@
 #comp {
  display: center;
   display: grid;
+  
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
 }
@@ -22,7 +23,7 @@
   width: 100px;
   height: 100px;
   margin: 10px 10px;
-  border:2px solid black
+  
 }
 
 
@@ -30,6 +31,7 @@
 .groupgroup {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
@@ -38,3 +40,13 @@
   display:flex;
   flex-wrap:wrap
 }
+
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
